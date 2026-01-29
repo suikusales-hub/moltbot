@@ -1,1 +1,16 @@
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="#050505"/>
+  <path d="M256 50 L450 150 L450 362 L256 462 L62 362 L62 150 Z" fill="none" stroke="#00f3ff" stroke-width="10" filter="url(#neon-glow)"/>
+  <path d="M256 120 L380 190 L380 322 L256 392 L132 322 L132 190 Z" fill="none" stroke="#bc13fe" stroke-width="8" filter="url(#neon-glow)"/>
+  <circle cx="256" cy="256" r="40" fill="#00f3ff" filter="url(#neon-glow)"/>
+  <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="monospace" font-weight="bold" font-size="200" fill="#ffffff" opacity="0.1">M</text>
+</svg>

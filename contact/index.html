@@ -1,1 +1,187 @@
+---
+layout: default
+title: Contact Us
+seo_title: Contact Moltbot Team - Inquiry & Support
+seo_description: Get in touch with the Moltbot team for inquiries, support, or collaboration opportunities. Fill out the form to send us a message.
+---
 
+<div class="container mx-auto px-4 py-12 relative">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 right-0 w-64 h-64 bg-brand-pink/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold font-mono text-white mb-4 glitch-hover" data-text="CONTACT US">CONTACT US</h1>
+      <p class="text-gray-400 max-w-lg mx-auto">
+        Have questions about Moltbot? Ready to start your automation journey? 
+        Fill out the form below and our neural network will process your request.
+      </p>
+    </div>
+
+    <!-- Inquiry Form -->
+    <div class="cyber-card p-1 relative bg-gray-900/50 backdrop-blur-sm border border-brand-cyan/30">
+      <!-- Corner decorations -->
+      <div class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-brand-cyan"></div>
+      <div class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-brand-cyan"></div>
+      <div class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-brand-cyan"></div>
+      <div class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-brand-cyan"></div>
+
+      <div class="p-6 md:p-8">
+        <form id="inquiryForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- First Name -->
+            <div class="form-group">
+              <label for="firstName" class="block mb-2 text-brand-cyan font-mono text-sm tracking-wider uppercase">First Name <span class="text-brand-pink">*</span></label>
+              <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name" 
+                class="w-full bg-black/50 border border-gray-700 text-white p-3 rounded focus:outline-none focus:border-brand-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all placeholder-gray-600 font-sans">
+            </div>
+            <!-- Last Name -->
+            <div class="form-group">
+              <label for="lastName" class="block mb-2 text-brand-cyan font-mono text-sm tracking-wider uppercase">Last Name <span class="text-brand-pink">*</span></label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name" 
+                class="w-full bg-black/50 border border-gray-700 text-white p-3 rounded focus:outline-none focus:border-brand-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all placeholder-gray-600 font-sans">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Country -->
+            <div class="form-group">
+              <label for="country" class="block mb-2 text-brand-cyan font-mono text-sm tracking-wider uppercase">Country <span class="text-brand-pink">*</span></label>
+              <input type="text" id="country" name="country" required placeholder="Enter your country" 
+                class="w-full bg-black/50 border border-gray-700 text-white p-3 rounded focus:outline-none focus:border-brand-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all placeholder-gray-600 font-sans">
+            </div>
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone" class="block mb-2 text-brand-cyan font-mono text-sm tracking-wider uppercase">Phone <span class="text-brand-pink">*</span></label>
+              <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number" 
+                class="w-full bg-black/50 border border-gray-700 text-white p-3 rounded focus:outline-none focus:border-brand-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all placeholder-gray-600 font-sans">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email" class="block mb-2 text-brand-cyan font-mono text-sm tracking-wider uppercase">Email <span class="text-brand-pink">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email address" 
+              class="w-full bg-black/50 border border-gray-700 text-white p-3 rounded focus:outline-none focus:border-brand-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all placeholder-gray-600 font-sans">
+          </div>
+
+          <!-- Content -->
+          <div class="form-group">
+            <label for="content" class="block mb-2 text-brand-cyan font-mono text-sm tracking-wider uppercase">Content <span class="text-brand-pink">*</span></label>
+            <textarea id="content" name="content" rows="5" required placeholder="Enter your inquiry content" 
+              class="w-full bg-black/50 border border-gray-700 text-white p-3 rounded focus:outline-none focus:border-brand-cyan focus:shadow-[0_0_10px_rgba(0,243,255,0.2)] transition-all placeholder-gray-600 font-sans"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="group relative w-full py-4 px-6 bg-brand-cyan/10 border border-brand-cyan text-brand-cyan font-bold font-mono uppercase tracking-widest hover:bg-brand-cyan hover:text-black transition-all duration-300 overflow-hidden">
+            <span class="relative z-10 flex items-center justify-center gap-2">
+              Submit Inquiry
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+            <div class="absolute top-0 left-[-100%] w-full h-full bg-brand-cyan/20 skew-x-12 group-hover:left-[100%] transition-all duration-700 ease-in-out"></div>
+          </button>
+          
+          <div class="tip hidden text-center p-3 rounded border font-mono text-sm" id="tip"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 获取表单和提示元素
+  const form = document.getElementById('inquiryForm');
+  const tip = document.getElementById('tip');
+
+  // 表单提交事件
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // 阻止默认跳转行为
+    const submitBtn = form.querySelector('button');
+    const originalBtnContent = submitBtn.innerHTML;
+    
+    submitBtn.disabled = true; // 禁用按钮，防止重复提交
+    submitBtn.innerHTML = '<span class="animate-pulse">TRANSMITTING DATA...</span>';
+    
+    tip.style.display = 'none'; // 隐藏之前的提示
+    tip.classList.add('hidden');
+    tip.classList.remove('text-green-400', 'border-green-400/30', 'bg-green-400/10', 'text-red-400', 'border-red-400/30', 'bg-red-400/10');
+
+    // 收集表单数据
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // 替换为你步骤2复制的Web应用URL！！！
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbzREkckKGsLoIKsfzGB9mg5G4fT_Oy5rTjVSZf9aBcVsG0l-aCbnPwu4E3xiUwloF7a/exec';
+      
+      // 发送POST请求到Google Apps Script
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        body: new URLSearchParams(data), // 格式必须是x-www-form-urlencoded
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          // 'Accept': 'application/json' // CORS issue might occur if specific headers are set, standard form submission usually works best
+        },
+        mode: 'no-cors' // Google Apps Script often requires no-cors for simple submission if not handling response strictly
+      });
+
+      // Since mode is no-cors, we can't read the response JSON directly to check status.
+      // We assume success if no network error occurred.
+      // If you need strictly read response, you need CORS setup on server side properly.
+      // However, the user provided code tries to parse JSON. 
+      // Let's stick to the user's provided logic but wrapped in try-catch.
+      // Wait, standard GAS `doPost` usually returns JSON but cross-origin might block reading it.
+      // Let's try the user's way first, if it fails, we fallback.
+      
+      // Actually, standard fetch to GAS execution URL often has CORS issues.
+      // Common workaround is using 'no-cors' and assuming success, OR using a proxy, OR if GAS serves with correct headers.
+      // User's code: `const response = await fetch(..., { ..., 'Accept': 'application/json' }); const result = await response.json();`
+      // I will keep user's logic but add error handling.
+      
+      // Correction: User provided code doesn't use no-cors. I should stick to their code structure but clean it up.
+      
+      /* Reverting to exact user logic with cleaned URL */
+      const response = await fetch(scriptUrl, {
+           method: 'POST',
+           body: new URLSearchParams(data),
+           headers: {
+             'Content-Type': 'application/x-www-form-urlencoded',
+             // 'Accept': 'application/json' 
+           }
+      });
+      
+      const result = await response.json();
+      
+      // 显示提示信息（适配英文）
+      tip.style.display = 'block';
+      tip.classList.remove('hidden');
+      
+      if (result.status === 'success') {
+        tip.className = 'tip block p-3 rounded border font-mono text-sm text-green-400 border-green-400/30 bg-green-400/10';
+        tip.textContent = result.msg;
+        form.reset(); // 重置表单
+      } else {
+        tip.className = 'tip block p-3 rounded border font-mono text-sm text-red-400 border-red-400/30 bg-red-400/10';
+        tip.textContent = result.msg;
+      }
+    } catch (err) {
+      // 网络错误提示（英文）
+      console.error(err);
+      tip.style.display = 'block';
+      tip.classList.remove('hidden');
+      
+      // Fallback: Google Apps Script 'no-cors' issue common workaround check
+      // If the error is related to JSON parsing (SyntaxError) it might be because of opaque response in no-cors or redirect.
+      // But let's just show the error.
+      
+      tip.className = 'tip block p-3 rounded border font-mono text-sm text-red-400 border-red-400/30 bg-red-400/10';
+      tip.textContent = 'Submission failed: Network error or Cross-Origin restriction. Please try again later.';
+    } finally {
+      submitBtn.disabled = false; // 恢复按钮
+      submitBtn.innerHTML = originalBtnContent;
+    }
+  });
+</script>

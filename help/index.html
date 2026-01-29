@@ -1,1 +1,73 @@
+---
+layout: default
+seo_title: Moltbot Help Center - Troubleshooting & Security
+seo_description: Solutions to common Moltbot errors, security best practices, and community support resources.
+---
 
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Help & Support Center</h1>
+
+<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
+  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
+  <p class="text-gray-300 leading-relaxed">
+    Even the most robust systems encounter issues. The Help Center is your first port of call when things don't go as planned. 
+    Here, we compile solutions to common errors, connection timeouts, and configuration mismatches. 
+    Beyond troubleshooting, this section emphasizes security best practices—critical for any bot with access to your communications and data. 
+    Learn how to secure your VPS, rotate API keys, and manage user permissions effectively.
+  </p>
+</div>
+
+<article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Troubleshooting Common Errors</h2>
+  <p>
+    [Content placeholder: Guide on fixing 'Connection Refused', 'Rate Limit Exceeded', and Docker container crashes. ~400 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Security Best Practices</h2>
+  <p>
+    [Content placeholder: Essential security tips: using firewalls (UFW), setting up fail2ban, and never committing .env files to git. ~350 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Updating Moltbot</h2>
+  <p>
+    [Content placeholder: Safe upgrade procedures. Backing up the database and pulling the latest Docker images. ~250 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Database Management</h2>
+  <p>
+    [Content placeholder: How to access the internal database, perform backups, and restore data if corruption occurs. ~300 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Community Support Resources</h2>
+  <p>
+    [Content placeholder: Links to the official Discord, GitHub Issues, and StackOverflow tags. How to report a bug effectively. ~200 words]
+  </p>
+</article>
+
+<section class="mb-12">
+  <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+  <div class="space-y-4">
+    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
+        <span>How do I reset the admin password?</span>
+        <span class="transform group-open:rotate-180 transition-transform">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </span>
+      </summary>
+      <div class="mt-4 text-gray-400">
+        You can reset the password by accessing the database directly or using the CLI tool provided within the Docker container.
+      </div>
+    </details>
+
+    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
+        <span>Why is my bot not responding on WhatsApp?</span>
+        <span class="transform group-open:rotate-180 transition-transform">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </span>
+      </summary>
+      <div class="mt-4 text-gray-400">
+        Check your webhook status in the Meta Developer Dashboard. Ensure your VPS firewall allows incoming traffic on the callback port.
+      </div>
+    </details>
+  </div>
+</section>

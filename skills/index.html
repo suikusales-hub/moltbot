@@ -1,73 +1,116 @@
 ---
 layout: default
 seo_title: Moltbot Skills Library - MoltHub & ClawdHub Reviews
-seo_description: Explore the best skills for Moltbot from MoltHub and ClawdHub. Extend your bot's capabilities.
+seo_description: Supercharge your AI agent with Skills. Explore the MoltHub marketplace for tools ranging from web browsing to code execution.
 ---
 
-<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Moltbot Skills & Capabilities</h1>
+<div class="relative mb-12">
+  <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight uppercase glitch-hover">
+    Moltbot <span class="text-brand-cyan">Skills & Capabilities</span>
+  </h1>
+  <div class="h-1 w-24 bg-brand-pink shadow-[0_0_10px_#bc13fe]"></div>
+</div>
 
-<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
-  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
-  <p class="text-gray-300 leading-relaxed">
+<div class="cyber-card p-6 mb-12 rounded-sm border-l-4 border-l-brand-cyan">
+  <h2 class="text-xl font-bold text-brand-cyan mb-4 uppercase tracking-widest flex items-center">
+    <span class="w-2 h-2 bg-brand-cyan mr-2 animate-pulse"></span>
+    Quick Summary
+  </h2>
+  <p class="text-gray-300 leading-relaxed font-sans text-lg">
     Skills are the functional modules that give Moltbot its powers. Without skills, Moltbot is just a conversationalist; 
     with skills, it becomes an agent capable of browsing the web, generating images, managing calendars, and writing code. 
-    This page reviews the extensive library of skills available through MoltHub and ClawdHub. 
+    This page reviews the extensive library of skills available through MoltHub (formerly ClawdHub). 
     We categorize skills into core utilities, productivity tools, and entertainment modules. 
     You will learn how to install new skills, configure their parameters, and even develop your own custom skills using the Moltbot SDK.
   </p>
 </div>
 
 <article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">What are Skills?</h2>
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">01 //</span> What are Skills?
+  </h2>
   <p>
-    [Content placeholder: Definition of skills (tools/functions) in the context of LLM agents. How the LLM decides to call a skill. ~200 words]
+    In the context of LLM agents, a "Skill" (often called a "Tool" or "Function") is a structured piece of code that the AI can execute. When you ask Moltbot to "Find the cheapest flight to Tokyo," the LLM doesn't guess; it recognizes the intent and calls the <code>flight_search</code> skill with parameters like <code>{ destination: "Tokyo", sort: "price" }</code>.
+  </p>
+  <p>
+    Moltbot supports the <strong>OpenAI Function Calling</strong> standard, making it compatible with thousands of existing definitions.
   </p>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Top Productivity Skills</h2>
-  <p>
-    [Content placeholder: Review of Calendar, Email, and Reminder skills. Usage examples and configuration tips. ~400 words]
-  </p>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">02 //</span> Top Productivity Skills
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose mb-6">
+    <div class="bg-brand-black p-4 border border-gray-800 hover:border-brand-cyan transition-colors">
+      <h3 class="font-bold text-white mb-2">📅 Calendar Sync</h3>
+      <p class="text-sm text-gray-400">Deep integration with Google Calendar and Outlook. "Clear my schedule for Friday afternoon."</p>
+    </div>
+    <div class="bg-brand-black p-4 border border-gray-800 hover:border-brand-cyan transition-colors">
+      <h3 class="font-bold text-white mb-2">📧 Email Manager</h3>
+      <p class="text-sm text-gray-400">Draft, send, and summarize emails via Gmail or SMTP/IMAP. "Summarize the last 5 emails from Peter."</p>
+    </div>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Web & Research Skills</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">03 //</span> Web & Research Skills
+  </h2>
   <p>
-    [Content placeholder: Deep dive into Web Browsing, Search, and Scraper skills. How to enable safe browsing. ~350 words]
+    Moltbot doesn't hallucinate facts; it verifies them.
   </p>
+  <ul class="list-disc pl-5 space-y-2 marker:text-brand-pink">
+    <li><strong>Browser (Puppeteer):</strong> A headless browser that can render JavaScript-heavy sites, take screenshots, and extract text.</li>
+    <li><strong>Exa Search (formerly Metaphor):</strong> A neural search engine designed for LLMs to find high-quality content, not just SEO spam.</li>
+    <li><strong>PDF Reader:</strong> Parse and analyze local PDF documents for summaries or data extraction.</li>
+  </ul>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Creative & Media Skills</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">04 //</span> Creative & Media Skills
+  </h2>
   <p>
-    [Content placeholder: Image generation (Stable Diffusion/DALL-E), text-to-speech, and media handling skills. ~300 words]
+    Turn your agent into a creative studio.
   </p>
+  <div class="bg-brand-black p-4 border-l-4 border-brand-pink rounded-r">
+    <code class="text-brand-pink text-sm block mb-2">/imagine prompt: "A cyberpunk city in the rain"</code>
+    <p class="text-sm text-gray-300">
+      Integrates with <strong>Stable Diffusion</strong> (local) or <strong>DALL-E 3</strong> (cloud) to generate images directly in the chat.
+    </p>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Installing Skills from MoltHub</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">05 //</span> Installing Skills from MoltHub
+  </h2>
   <p>
-    [Content placeholder: Step-by-step guide on using the package manager to install skills from the official registry. ~250 words]
+    MoltHub is the community registry for skills. You can install skills using the CLI directly inside your Moltbot container:
   </p>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm">
+    <span class="text-green-400">moltbot skill install github-ops</span><br>
+    <span class="text-green-400">moltbot skill install linear-integration</span>
+  </div>
 </article>
 
 <section class="mb-12">
-  <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+  <h2 class="text-3xl font-bold text-white mb-6 uppercase tracking-wider"><span class="text-brand-pink">///</span> FAQ</h2>
   <div class="space-y-4">
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>How do I write my own skill?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
+    <details class="group bg-brand-black border border-gray-800 p-4 cursor-pointer hover:border-brand-cyan transition-all duration-300">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-brand-cyan transition-colors">
+        <span class="font-mono">01 // How do I write my own skill?</span>
+        <span class="transform group-open:rotate-180 transition-transform text-brand-cyan">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </summary>
-      <div class="mt-4 text-gray-400">
-        Skills are written in TypeScript/JavaScript. You define the function schema for the LLM and the implementation logic. Check the developer docs for the SDK.
+      <div class="mt-4 text-gray-400 pl-4 border-l-2 border-brand-cyan/30">
+        Skills are written in TypeScript/JavaScript. You simply define the Zod schema for the arguments and an asynchronous function for the logic. Our SDK handles the JSON-RPC communication with the LLM.
       </div>
     </details>
 
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Are skills safe to use?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
+    <details class="group bg-brand-black border border-gray-800 p-4 cursor-pointer hover:border-brand-cyan transition-all duration-300">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-brand-cyan transition-colors">
+        <span class="font-mono">02 // Are skills safe to use?</span>
+        <span class="transform group-open:rotate-180 transition-transform text-brand-cyan">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </summary>
-      <div class="mt-4 text-gray-400">
-        Official skills on MoltHub are vetted, but you should always review the code of 3rd party skills before installing them on your server.
+      <div class="mt-4 text-gray-400 pl-4 border-l-2 border-brand-cyan/30">
+        Official skills on MoltHub (marked with a blue badge) are audited by the core team. For third-party skills, we recommend reviewing the source code, as skills run with the same privileges as the Moltbot process itself.
       </div>
     </details>
   </div>

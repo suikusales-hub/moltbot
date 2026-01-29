@@ -4,10 +4,10 @@ seo_title: Moltbot Help Center - Troubleshooting & Security
 seo_description: Solutions to common Moltbot errors, security best practices, and community support resources.
 ---
 
-<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Help & Support Center</h1>
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6 glitch-text" data-text="Help & Support Center">Help & Support Center</h1>
 
-<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
-  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
+<div class="cyber-card p-6 mb-12">
+  <h2 class="text-xl font-semibold text-brand-pink mb-2">Quick Summary</h2>
   <p class="text-gray-300 leading-relaxed">
     Even the most robust systems encounter issues. The Help Center is your first port of call when things don't go as planned. 
     Here, we compile solutions to common errors, connection timeouts, and configuration mismatches. 
@@ -17,57 +17,126 @@ seo_description: Solutions to common Moltbot errors, security best practices, an
 </div>
 
 <article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Troubleshooting Common Errors</h2>
-  <p>
-    [Content placeholder: Guide on fixing 'Connection Refused', 'Rate Limit Exceeded', and Docker container crashes. ~400 words]
-  </p>
+  
+  <div class="mb-10">
+    <h2 class="text-2xl font-bold text-brand-cyan mt-8 mb-4 flex items-center">
+      <span class="mr-2">🔧</span> Troubleshooting Common Errors
+    </h2>
+    <div class="cyber-card p-6 bg-opacity-20 bg-red-900 border-l-4 border-red-500">
+      <h3 class="text-lg font-bold text-white mb-2">Viewing Logs</h3>
+      <p class="mb-4">The first step in any diagnosis is checking the container logs. This often reveals the exact error message.</p>
+      <div class="bg-black p-4 rounded border border-gray-700 font-mono text-sm mb-4">
+        <span class="text-brand-pink">$</span> docker logs -f moltbot-app --tail 100
+      </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Security Best Practices</h2>
-  <p>
-    [Content placeholder: Essential security tips: using firewalls (UFW), setting up fail2ban, and never committing .env files to git. ~350 words]
-  </p>
+      <h3 class="text-lg font-bold text-white mb-2">Rate Limit Exceeded (429)</h3>
+      <p class="mb-4">If you see <code>429 Too Many Requests</code> from OpenAI or Anthropic, you have hit your API quota. To resolve this:</p>
+      <ul class="list-disc pl-5 mb-4 text-gray-400">
+        <li>Check your billing status on the provider's dashboard.</li>
+        <li>Implement exponential backoff in your requests (Moltbot handles this automatically by default).</li>
+        <li>Switch to a fallback model in your <code>ROUTER_CONFIG</code>.</li>
+      </ul>
+
+      <h3 class="text-lg font-bold text-white mb-2">Connection Refused</h3>
+      <p>This usually means the Docker container isn't running or the port is blocked. Verify the container status with <code>docker ps</code> and ensure port 3000 is open in your firewall.</p>
+    </div>
+  </div>
+
+  <div class="mb-10">
+    <h2 class="text-2xl font-bold text-green-400 mt-8 mb-4 flex items-center">
+      <span class="mr-2">🛡️</span> Security Best Practices
+    </h2>
+    <div class="cyber-card p-6 bg-opacity-20 bg-green-900 border-l-4 border-green-400">
+      <p class="mb-4">
+        Moltbot often processes sensitive data. Securing your infrastructure is non-negotiable.
+      </p>
+      <ul class="space-y-2">
+        <li class="flex items-start">
+          <span class="text-brand-pink mr-2">➜</span>
+          <span><strong>Never commit .env files:</strong> Ensure your <code>.gitignore</code> includes <code>.env</code>. API keys typically lead to compromised accounts within minutes if leaked.</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-brand-pink mr-2">➜</span>
+          <span><strong>Use UFW Firewall:</strong> Only allow necessary ports. <code class="text-sm bg-gray-800 px-1 rounded">ufw allow 80/tcp</code>, <code class="text-sm bg-gray-800 px-1 rounded">ufw allow 443/tcp</code>, and <code class="text-sm bg-gray-800 px-1 rounded">ufw allow 22/tcp</code>. Block everything else.</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-brand-pink mr-2">➜</span>
+          <span><strong>Install Fail2Ban:</strong> Protect your SSH access from brute-force attacks. Fail2Ban bans IPs that show malicious signs.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <h2 class="text-2xl font-bold text-white mt-8 mb-4">Updating Moltbot</h2>
   <p>
-    [Content placeholder: Safe upgrade procedures. Backing up the database and pulling the latest Docker images. ~250 words]
+    To upgrade to the latest version of Moltbot without losing data, follow this standard procedure. Your database volume is persistent, so it will remain safe.
   </p>
+  <div class="bg-black p-4 rounded border border-gray-700 font-mono text-sm mb-8">
+    <div class="text-gray-400"># Pull the latest images</div>
+    <div class="text-white">docker-compose pull</div>
+    <br>
+    <div class="text-gray-400"># Restart containers (minimal downtime)</div>
+    <div class="text-white">docker-compose up -d --remove-orphans</div>
+    <br>
+    <div class="text-gray-400"># Prune old images to save space</div>
+    <div class="text-white">docker image prune -f</div>
+  </div>
 
   <h2 class="text-2xl font-bold text-white mt-8 mb-4">Database Management</h2>
   <p>
-    [Content placeholder: How to access the internal database, perform backups, and restore data if corruption occurs. ~300 words]
+    Moltbot uses PostgreSQL. Regular backups are recommended before major updates.
   </p>
+  <div class="bg-black p-4 rounded border border-gray-700 font-mono text-sm mb-8">
+    <div class="text-gray-400"># Create a backup</div>
+    <div class="text-white">docker exec -t moltbot-db pg_dumpall -c -U moltbot > dump_$(date +%Y-%m-%d).sql</div>
+    <br>
+    <div class="text-gray-400"># Restore from backup</div>
+    <div class="text-white">cat dump_2024-01-01.sql | docker exec -i moltbot-db psql -U moltbot</div>
+  </div>
 
   <h2 class="text-2xl font-bold text-white mt-8 mb-4">Community Support Resources</h2>
-  <p>
-    [Content placeholder: Links to the official Discord, GitHub Issues, and StackOverflow tags. How to report a bug effectively. ~200 words]
-  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+    <a href="#" class="cyber-card p-4 hover:border-brand-pink transition-colors text-center group">
+      <h3 class="font-bold text-white mb-2 group-hover:text-brand-pink">GitHub Issues</h3>
+      <p class="text-sm text-gray-400">Report bugs and request features directly to the dev team.</p>
+    </a>
+    <a href="#" class="cyber-card p-4 hover:border-brand-cyan transition-colors text-center group">
+      <h3 class="font-bold text-white mb-2 group-hover:text-brand-cyan">Discord Community</h3>
+      <p class="text-sm text-gray-400">Chat with other Moltbot users and share your custom skills.</p>
+    </a>
+  </div>
+
 </article>
 
 <section class="mb-12">
   <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
   <div class="space-y-4">
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>How do I reset the admin password?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </summary>
-      <div class="mt-4 text-gray-400">
-        You can reset the password by accessing the database directly or using the CLI tool provided within the Docker container.
-      </div>
-    </details>
+    <div class="cyber-card p-0 overflow-hidden">
+      <details class="group">
+        <summary class="flex justify-between items-center font-medium text-white p-4 cursor-pointer hover:bg-gray-800 transition-colors">
+          <span>How do I reset the admin password?</span>
+          <span class="transform group-open:rotate-180 transition-transform text-brand-pink">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </summary>
+        <div class="p-4 pt-0 text-gray-400 border-t border-gray-800">
+          You can reset the password via the CLI tool inside the container: <code>docker exec -it moltbot-app npm run reset-password &lt;email&gt;</code>. Alternatively, you can modify the user record directly in the PostgreSQL database if you have access.
+        </div>
+      </details>
+    </div>
 
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Why is my bot not responding on WhatsApp?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </summary>
-      <div class="mt-4 text-gray-400">
-        Check your webhook status in the Meta Developer Dashboard. Ensure your VPS firewall allows incoming traffic on the callback port.
-      </div>
-    </details>
+    <div class="cyber-card p-0 overflow-hidden">
+      <details class="group">
+        <summary class="flex justify-between items-center font-medium text-white p-4 cursor-pointer hover:bg-gray-800 transition-colors">
+          <span>Why is my bot not responding on WhatsApp?</span>
+          <span class="transform group-open:rotate-180 transition-transform text-brand-pink">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </summary>
+        <div class="p-4 pt-0 text-gray-400 border-t border-gray-800">
+          Check your webhook status in the Meta Developer Dashboard. Ensure your VPS firewall allows incoming traffic on the callback port (usually 3000 or 443 if proxied). Also verify that your <code>WHATSAPP_VERIFY_TOKEN</code> matches exactly.
+        </div>
+      </details>
+    </div>
   </div>
 </section>

@@ -1,74 +1,129 @@
 ---
 layout: default
 seo_title: Moltbot Channel Integrations - WhatsApp, Discord & Telegram
-seo_description: How to connect Moltbot to your favorite communication channels including WhatsApp, Discord, and Telegram.
+seo_description: Connect your sovereign AI agent to the world. Step-by-step guides for integrating Moltbot with WhatsApp, Discord, Telegram, and Slack.
 ---
 
-<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Connecting Channels to Moltbot</h1>
+<div class="relative mb-12">
+  <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight uppercase glitch-hover">
+    Connecting <span class="text-brand-cyan">Channels</span>
+  </h1>
+  <div class="h-1 w-24 bg-brand-pink shadow-[0_0_10px_#bc13fe]"></div>
+</div>
 
-<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
-  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
-  <p class="text-gray-300 leading-relaxed">
+<div class="cyber-card p-6 mb-12 rounded-sm border-l-4 border-l-brand-cyan">
+  <h2 class="text-xl font-bold text-brand-cyan mb-4 uppercase tracking-widest flex items-center">
+    <span class="w-2 h-2 bg-brand-cyan mr-2 animate-pulse"></span>
+    Quick Summary
+  </h2>
+  <p class="text-gray-300 leading-relaxed font-sans text-lg">
     One of Moltbot's most powerful features is its ability to live where your users are. 
     Instead of forcing users to visit a specific website, Moltbot integrates directly into popular messaging platforms. 
     This section covers the configuration for the three primary supported channels: WhatsApp, Discord, and Telegram. 
-    You will learn how to obtain API tokens for each platform, configure the necessary webhooks, and map user identities across different services. 
     Whether you are building a community moderator for Discord or a customer support agent on WhatsApp, 
     the unified channel architecture ensures your bot behaves consistently everywhere.
   </p>
 </div>
 
 <article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">WhatsApp Integration</h2>
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">01 //</span> WhatsApp Integration
+  </h2>
   <p>
-    [Content placeholder: Detailed guide on using the Meta Graph API or third-party gateways. QR code scanning setup if applicable. ~400 words]
+    Moltbot supports WhatsApp via the <strong>Moltbot WhatsApp Bridge</strong>, a local service that emulates a WhatsApp Web client. This method allows you to use your existing phone number without needing a Meta Business API account.
+  </p>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm mb-4">
+    <span class="text-gray-500"># In your docker-compose.yml</span><br>
+    <span class="text-green-400">whatsapp-bridge:</span><br>
+    <span class="text-green-400">&nbsp;&nbsp;image: moltbot/whatsapp-bridge:latest</span><br>
+    <span class="text-green-400">&nbsp;&nbsp;environment:</span><br>
+    <span class="text-green-400">&nbsp;&nbsp;&nbsp;&nbsp;- MOLTBOT_CORE_URL=http://core:3000</span>
+  </div>
+  <p>
+    <strong>Setup:</strong> Once the container is running, check the logs. It will generate a QR code. Scan this code with your WhatsApp mobile app (Linked Devices) to authenticate. Your bot will now listen to incoming messages and reply automatically.
   </p>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Discord Bot Setup</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">02 //</span> Discord Bot Setup
+  </h2>
   <p>
-    [Content placeholder: Creating a Discord Application, enabling intents, and inviting the bot to your server. Handling roles and permissions. ~400 words]
+    To connect Moltbot to Discord, you need to create an application in the Discord Developer Portal.
   </p>
+  <ol class="list-decimal pl-5 space-y-2 marker:text-brand-cyan">
+    <li>Go to the <a href="#" class="text-brand-cyan hover:text-brand-pink transition-colors">Discord Developer Portal</a> and create a "New Application".</li>
+    <li>Navigate to the <strong>Bot</strong> tab and click "Add Bot".</li>
+    <li><strong>Important:</strong> Enable "Message Content Intent" under Privileged Gateway Intents. Without this, Moltbot cannot read user messages.</li>
+    <li>Copy the <strong>Bot Token</strong> and add it to your <code>.env</code> file:</li>
+  </ol>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm mt-2">
+    <span class="text-green-400">DISCORD_BOT_TOKEN=MTk4...</span>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Telegram Bot API</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">03 //</span> Telegram Bot API
+  </h2>
   <p>
-    [Content placeholder: Using BotFather to create a bot, getting the token, and setting up webhooks. ~300 words]
+    Telegram is the easiest channel to configure thanks to BotFather.
   </p>
+  <ul class="list-disc pl-5 space-y-2 marker:text-brand-pink">
+    <li>Open Telegram and search for <strong>@BotFather</strong>.</li>
+    <li>Send the command <code>/newbot</code> and follow the instructions to name your bot.</li>
+    <li>BotFather will give you an API Token (e.g., <code>123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code>).</li>
+    <li>Add this token to your Moltbot configuration. Moltbot will automatically set up the webhook to receive updates.</li>
+  </ul>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Unified Messaging Protocol</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">04 //</span> Unified Messaging Protocol
+  </h2>
   <p>
-    [Content placeholder: How Moltbot normalizes messages from different sources into a single internal format. ~200 words]
+    Regardless of the channel, Moltbot normalizes all incoming events into a standard <code>MessageReceived</code> event. This means your skills and logic don't need to know if a message came from WhatsApp or Discord.
   </p>
+  <div class="bg-brand-black p-4 border border-gray-800 rounded relative overflow-hidden group">
+    <div class="absolute top-0 right-0 p-2 opacity-50 font-mono text-xs text-brand-pink">internal_event.json</div>
+    <pre class="text-xs text-gray-400 font-mono">
+{
+  "type": "message",
+  "content": "Hello Moltbot!",
+  "sender": {
+    "id": "user_123",
+    "platform": "discord" <span class="text-gray-600">// or "whatsapp", "telegram"</span>
+  },
+  "timestamp": 1706523400
+}</pre>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Managing Multi-Channel Conversations</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">05 //</span> Managing Multi-Channel Conversations
+  </h2>
   <p>
-    [Content placeholder: Strategies for maintaining context when a user switches between platforms (if supported) or handling simultaneous chats. ~250 words]
+    Moltbot uses Redis to maintain session state across channels. If you want to link a Discord user to a Telegram user (so they share the same memory), you can use the <strong>Identity Mapping</strong> feature in the admin dashboard. This allows a user to start a task on their desktop (Discord) and finish it on their phone (WhatsApp) without losing context.
   </p>
 </article>
 
 <section class="mb-12">
-  <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+  <h2 class="text-3xl font-bold text-white mb-6 uppercase tracking-wider"><span class="text-brand-pink">///</span> FAQ</h2>
   <div class="space-y-4">
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Do I need a business account for WhatsApp?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
+    <details class="group bg-brand-black border border-gray-800 p-4 cursor-pointer hover:border-brand-cyan transition-all duration-300">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-brand-cyan transition-colors">
+        <span class="font-mono">01 // Do I need a business account for WhatsApp?</span>
+        <span class="transform group-open:rotate-180 transition-transform text-brand-cyan">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </summary>
-      <div class="mt-4 text-gray-400">
-        It depends on the integration method. Official API requires a Business account, but some community plugins work with personal accounts (use with caution).
+      <div class="mt-4 text-gray-400 pl-4 border-l-2 border-brand-cyan/30">
+        It depends on the integration method. The Official WhatsApp Business API requires a Business account and verification. However, our "WhatsApp Bridge" method works with any standard personal WhatsApp account by emulating a web session.
       </div>
     </details>
 
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Can the bot be in multiple Discord servers?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
+    <details class="group bg-brand-black border border-gray-800 p-4 cursor-pointer hover:border-brand-cyan transition-all duration-300">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-brand-cyan transition-colors">
+        <span class="font-mono">02 // Can the bot be in multiple Discord servers?</span>
+        <span class="transform group-open:rotate-180 transition-transform text-brand-cyan">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </summary>
-      <div class="mt-4 text-gray-400">
-        Yes, a single Moltbot instance can serve multiple Discord servers simultaneously.
+      <div class="mt-4 text-gray-400 pl-4 border-l-2 border-brand-cyan/30">
+        Yes, a single Moltbot instance can serve multiple Discord servers simultaneously. You can configure whether the bot shares memory across servers or keeps each server's context isolated via the <code>ISOLATE_GUILDS</code> environment variable.
       </div>
     </details>
   </div>

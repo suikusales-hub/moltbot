@@ -1,1 +1,80 @@
+---
+layout: default
+seo_title: Moltbot Setup Guide - Installation & VPS Configuration
+seo_description: Step-by-step tutorial on installing Moltbot on VPS, configuring environment variables, and initial setup.
+---
 
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Moltbot Setup & Installation Guide</h1>
+
+<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
+  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
+  <p class="text-gray-300 leading-relaxed">
+    Setting up Moltbot requires a reliable environment to ensure 24/7 availability for your digital employees. 
+    This guide walks you through the complete installation process, starting from selecting the right Virtual Private Server (VPS) provider 
+    to configuring the necessary runtime environments. We recommend a Linux-based environment (Ubuntu 22.04 LTS) with Docker support 
+    for the most stable deployment. You will learn how to clone the repository, set up your `.env` configuration file with API keys, 
+    and launch the application using Docker Compose. 
+    By following these steps, you will have a fully functional Moltbot instance ready to accept connections from various channels.
+  </p>
+</div>
+
+<article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Prerequisites</h2>
+  <p>
+    [Content placeholder: List of requirements including VPS specs (CPU, RAM), Node.js version, Docker, and Git. ~200 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 1: VPS Provisioning</h2>
+  <p>
+    [Content placeholder: detailed instructions on buying and accessing a VPS from providers like DigitalOcean or Hetzner. SSH access guide. ~300 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 2: Environment Configuration</h2>
+  <p>
+    [Content placeholder: How to install dependencies, update packages, and prepare the OS. ~250 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 3: Installation via Docker</h2>
+  <p>
+    [Content placeholder: Docker Compose setup, pulling images, and running the container. The preferred method for production. ~300 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 4: Configuring .env Variables</h2>
+  <p>
+    [Content placeholder: Detailed breakdown of the .env file. Explaining API_KEYs, PORT, and DATABASE_URL settings. ~300 words]
+  </p>
+
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 5: Verifying the Installation</h2>
+  <p>
+    [Content placeholder: How to check logs, verify the health check endpoint, and ensure the bot is running. ~150 words]
+  </p>
+</article>
+
+<section class="mb-12">
+  <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+  <div class="space-y-4">
+    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
+        <span>What is the minimum RAM requirement?</span>
+        <span class="transform group-open:rotate-180 transition-transform">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </span>
+      </summary>
+      <div class="mt-4 text-gray-400">
+        We recommend at least 2GB of RAM for a smooth experience, especially if you plan to use local embeddings or multiple heavy skills.
+      </div>
+    </details>
+
+    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
+        <span>Can I use Windows Server?</span>
+        <span class="transform group-open:rotate-180 transition-transform">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </span>
+      </summary>
+      <div class="mt-4 text-gray-400">
+        While possible, we strongly recommend Linux (Ubuntu) for better compatibility with Docker and standard server tools.
+      </div>
+    </details>
+  </div>
+</section>

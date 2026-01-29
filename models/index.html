@@ -4,10 +4,10 @@ seo_title: Moltbot AI Models - Claude 4.5, OpenAI & Local LLMs
 seo_description: Configure different AI models in Moltbot. Compare Claude 4.5, GPT-4, and local LLM performance.
 ---
 
-<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">AI Models & LLM Providers</h1>
+<h1 class="text-4xl md:text-5xl font-bold text-white mb-6 glitch-text" data-text="AI Models & LLM Providers">AI Models & LLM Providers</h1>
 
-<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
-  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
+<div class="cyber-card p-6 mb-12">
+  <h2 class="text-xl font-semibold text-brand-pink mb-2">Quick Summary</h2>
   <p class="text-gray-300 leading-relaxed">
     The brain of Moltbot is the Large Language Model (LLM) driving it. Moltbot is model-agnostic, meaning it can interface with a variety of providers. 
     This flexibility allows you to choose the best model for your specific needs—balancing intelligence, speed, and cost. 
@@ -18,57 +18,154 @@ seo_description: Configure different AI models in Moltbot. Compare Claude 4.5, G
 </div>
 
 <article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Anthropic Claude Integration</h2>
-  <p>
-    [Content placeholder: Setting up Claude 4.5/3.5 Sonnet. Discussing its superior reasoning and coding capabilities. Configuration steps. ~350 words]
-  </p>
+  
+  <div class="mb-10">
+    <h2 class="text-2xl font-bold text-brand-cyan mt-8 mb-4 flex items-center">
+      <span class="mr-2">🧠</span> Anthropic Claude Integration
+    </h2>
+    <div class="cyber-card p-6 bg-opacity-20 bg-blue-900 border-l-4 border-brand-cyan">
+      <p class="mb-4">
+        Anthropic's <strong>Claude 3.5 Sonnet</strong> is currently the recommended model for Moltbot due to its exceptional reasoning capabilities and natural coding style. It outperforms many competitors in following complex multi-step instructions, making it ideal for autonomous agent tasks.
+      </p>
+      <p class="mb-4">
+        To configure Claude, you need to obtain an API key from the Anthropic Console and update your <code>.env</code> file. Claude's large context window (200k tokens) allows Moltbot to "remember" vast amounts of documentation or conversation history without losing context.
+      </p>
+      <div class="bg-black p-4 rounded border border-gray-700 font-mono text-sm overflow-x-auto">
+        <div class="text-gray-400"># .env configuration for Claude</div>
+        <div class="text-brand-pink">LLM_PROVIDER=anthropic</div>
+        <div class="text-brand-cyan">ANTHROPIC_API_KEY=sk-ant-api03-...</div>
+        <div class="text-green-400">MODEL_NAME=claude-3-5-sonnet-20240620</div>
+      </div>
+    </div>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">OpenAI GPT Models</h2>
-  <p>
-    [Content placeholder: Configuring GPT-4o and GPT-3.5 Turbo. Function calling reliability and cost optimization. ~350 words]
-  </p>
+  <div class="mb-10">
+    <h2 class="text-2xl font-bold text-green-400 mt-8 mb-4 flex items-center">
+      <span class="mr-2">🤖</span> OpenAI GPT Models
+    </h2>
+    <div class="cyber-card p-6 bg-opacity-20 bg-green-900 border-l-4 border-green-400">
+      <p class="mb-4">
+        OpenAI's <strong>GPT-4o</strong> is the industry standard for reliability and speed. It offers excellent support for "Function Calling," which is the mechanism Moltbot uses to execute tools (like searching the web or querying a database).
+      </p>
+      <p class="mb-4">
+        For cost-sensitive deployments, <strong>GPT-4o-mini</strong> is a viable alternative for simpler tasks, though it may struggle with highly complex reasoning chains. We recommend sticking to the flagship models for production environments where accuracy is paramount.
+      </p>
+      <div class="bg-black p-4 rounded border border-gray-700 font-mono text-sm overflow-x-auto">
+        <div class="text-gray-400"># .env configuration for OpenAI</div>
+        <div class="text-brand-pink">LLM_PROVIDER=openai</div>
+        <div class="text-brand-cyan">OPENAI_API_KEY=sk-proj-...</div>
+        <div class="text-green-400">MODEL_NAME=gpt-4o</div>
+      </div>
+    </div>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Local LLMs with Ollama</h2>
-  <p>
-    [Content placeholder: How to run Llama 3, Mistral, or Qwen locally and connect them to Moltbot. Privacy benefits and hardware requirements. ~400 words]
-  </p>
+  <div class="mb-10">
+    <h2 class="text-2xl font-bold text-yellow-400 mt-8 mb-4 flex items-center">
+      <span class="mr-2">🏠</span> Local LLMs with Ollama
+    </h2>
+    <div class="cyber-card p-6 bg-opacity-20 bg-yellow-900 border-l-4 border-yellow-400">
+      <p class="mb-4">
+        For complete data privacy and zero API costs, you can run Moltbot using local models via <strong>Ollama</strong>. This is perfect for enterprise environments where data cannot leave the premises. Popular choices include Llama 3, Mistral, and Qwen 2.5.
+      </p>
+      <p class="mb-4">
+        <strong>Hardware Requirements:</strong> Running a decent 7B or 8B parameter model requires at least 16GB of RAM (or 8GB VRAM). For larger models like Llama-3-70B, you will need significantly more powerful hardware (e.g., dual A100s or Mac Studio with 128GB RAM).
+      </p>
+      <div class="bg-black p-4 rounded border border-gray-700 font-mono text-sm overflow-x-auto">
+        <div class="text-gray-400"># .env configuration for Local/Ollama</div>
+        <div class="text-brand-pink">LLM_PROVIDER=ollama</div>
+        <div class="text-brand-cyan">OLLAMA_BASE_URL=http://host.docker.internal:11434</div>
+        <div class="text-green-400">MODEL_NAME=llama3</div>
+      </div>
+    </div>
+  </div>
 
   <h2 class="text-2xl font-bold text-white mt-8 mb-4">Model Performance Benchmarks</h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-gray-900 border border-gray-800 rounded-lg overflow-hidden">
+      <thead class="bg-black">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Model</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Reasoning Score</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Coding Score</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Cost / 1M Tok</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-800">
+        <tr class="hover:bg-gray-800 transition-colors">
+          <td class="px-6 py-4 whitespace-nowrap text-brand-cyan font-bold">Claude 3.5 Sonnet</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">96/100</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">92/100</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">$3.00</td>
+        </tr>
+        <tr class="hover:bg-gray-800 transition-colors">
+          <td class="px-6 py-4 whitespace-nowrap text-green-400 font-bold">GPT-4o</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">95/100</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">90/100</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">$5.00</td>
+        </tr>
+        <tr class="hover:bg-gray-800 transition-colors">
+          <td class="px-6 py-4 whitespace-nowrap text-yellow-400 font-bold">Llama 3 (8B)</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">78/100</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">70/100</td>
+          <td class="px-6 py-4 whitespace-nowrap text-gray-300">$0.00 (Local)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4">Switching Models Dynamically</h2>
   <p>
-    [Content placeholder: Comparative table and analysis of response time, accuracy, and cost per token for supported models. ~300 words]
+    Moltbot supports a hybrid approach where you can configure a "Router" to dispatch tasks. For example, simple conversational "chitchat" can be routed to a cheaper or faster model (like GPT-4o-mini), while complex data analysis or coding tasks are sent to Claude 3.5 Sonnet.
+  </p>
+  <p>
+    This is configured via the <code>ROUTER_CONFIG_JSON</code> environment variable, allowing you to define regex patterns or keyword triggers that determine which model handles a specific request. This architecture optimizes your monthly spend while maintaining high intelligence where it matters most.
   </p>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Switching Models Dynamically</h2>
-  <p>
-    [Content placeholder: Advanced configuration to use cheaper models for simple queries and smarter models for complex tasks. ~200 words]
-  </p>
 </article>
 
 <section class="mb-12">
   <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
   <div class="space-y-4">
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Which model is best for coding tasks?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </summary>
-      <div class="mt-4 text-gray-400">
-        Currently, Claude 3.5 Sonnet and GPT-4o are the top performers for code generation and technical reasoning.
-      </div>
-    </details>
+    <div class="cyber-card p-0 overflow-hidden">
+      <details class="group">
+        <summary class="flex justify-between items-center font-medium text-white p-4 cursor-pointer hover:bg-gray-800 transition-colors">
+          <span>Which model is best for coding tasks?</span>
+          <span class="transform group-open:rotate-180 transition-transform text-brand-pink">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </summary>
+        <div class="p-4 pt-0 text-gray-400 border-t border-gray-800">
+          Currently, Claude 3.5 Sonnet and GPT-4o are the top performers for code generation and technical reasoning. We generally find Claude 3.5 Sonnet to produce slightly more maintainable code with fewer hallucinations.
+        </div>
+      </details>
+    </div>
 
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Can I fine-tune a model for Moltbot?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </span>
-      </summary>
-      <div class="mt-4 text-gray-400">
-        Yes, if you use a provider that supports fine-tuning (like OpenAI) or run a custom fine-tuned local model, you can point Moltbot to it.
-      </div>
-    </details>
+    <div class="cyber-card p-0 overflow-hidden">
+      <details class="group">
+        <summary class="flex justify-between items-center font-medium text-white p-4 cursor-pointer hover:bg-gray-800 transition-colors">
+          <span>Can I fine-tune a model for Moltbot?</span>
+          <span class="transform group-open:rotate-180 transition-transform text-brand-pink">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </summary>
+        <div class="p-4 pt-0 text-gray-400 border-t border-gray-800">
+          Yes. If you use OpenAI, you can fine-tune a model on their platform and provide the custom model ID in your configuration. For local models, you can fine-tune a Llama 3 checkpoint and serve it via Ollama or vLLM.
+        </div>
+      </details>
+    </div>
+    
+    <div class="cyber-card p-0 overflow-hidden">
+      <details class="group">
+        <summary class="flex justify-between items-center font-medium text-white p-4 cursor-pointer hover:bg-gray-800 transition-colors">
+          <span>How do I secure my API keys?</span>
+          <span class="transform group-open:rotate-180 transition-transform text-brand-pink">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </span>
+        </summary>
+        <div class="p-4 pt-0 text-gray-400 border-t border-gray-800">
+          API keys are stored in the <code>.env</code> file, which is excluded from version control (via <code>.gitignore</code>). For production deployments, we recommend using a secret manager (like AWS Secrets Manager or Vault) to inject these variables into the container environment at runtime.
+        </div>
+      </details>
+    </div>
   </div>
 </section>

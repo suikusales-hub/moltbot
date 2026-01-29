@@ -6,6 +6,7 @@
   <title>{{ page.seo_title | default: site.title }}</title>
   <meta name="description" content="{{ page.seo_description | default: site.description }}">
   <link rel="canonical" href="https://moltbotcase.com{{ page.url | replace:'index.html','' }}">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/assets/css/style.css">
@@ -47,7 +48,15 @@
       "@type": "Person",
       "name": "Moltbot Expert"
     },
-    "datePublished": "{{ site.time | date_to_xmlschema }}"
+    "datePublished": "{{ site.time | date_to_xmlschema }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Moltbot Case",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://moltbotcase.com/img/moltbot-case-logo.com.png"
+      }
+    }
   }
   </script>
 </head>

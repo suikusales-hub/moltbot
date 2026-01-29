@@ -1,79 +1,168 @@
 ---
 layout: default
 seo_title: Moltbot Setup Guide - Installation & VPS Configuration
-seo_description: Step-by-step tutorial on installing Moltbot on VPS, configuring environment variables, and initial setup.
+seo_description: Step-by-step tutorial on installing Moltbot on VPS or Mac Mini, configuring environment variables, and initial setup for your sovereign AI agent.
 ---
 
-<h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Moltbot Setup & Installation Guide</h1>
+<div class="relative mb-12">
+  <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight uppercase glitch-hover">
+    Moltbot <span class="text-brand-cyan">Setup & Installation</span>
+  </h1>
+  <div class="h-1 w-24 bg-brand-pink shadow-[0_0_10px_#bc13fe]"></div>
+</div>
 
-<div class="bg-gray-900 border-l-4 border-[#FF5733] p-6 mb-12 rounded-r-lg">
-  <h2 class="text-xl font-semibold text-[#FF5733] mb-2">Quick Summary</h2>
-  <p class="text-gray-300 leading-relaxed">
+<div class="cyber-card p-6 mb-12 rounded-sm border-l-4 border-l-brand-cyan">
+  <h2 class="text-xl font-bold text-brand-cyan mb-4 uppercase tracking-widest flex items-center">
+    <span class="w-2 h-2 bg-brand-cyan mr-2 animate-pulse"></span>
+    Quick Summary
+  </h2>
+  <p class="text-gray-300 leading-relaxed font-sans text-lg">
     Setting up Moltbot requires a reliable environment to ensure 24/7 availability for your digital employees. 
-    This guide walks you through the complete installation process, starting from selecting the right Virtual Private Server (VPS) provider 
-    to configuring the necessary runtime environments. We recommend a Linux-based environment (Ubuntu 22.04 LTS) with Docker support 
-    for the most stable deployment. You will learn how to clone the repository, set up your `.env` configuration file with API keys, 
-    and launch the application using Docker Compose. 
-    By following these steps, you will have a fully functional Moltbot instance ready to accept connections from various channels.
+    This guide walks you through the complete installation process, starting from selecting the right hardware (Mac Mini or Linux VPS)
+    to configuring the necessary runtime environments. We recommend a Docker-based deployment for maximum stability and security.
+    By following these steps, you will have a fully functional sovereign AI agent ready to execute tasks on your behalf.
   </p>
 </div>
 
 <article class="prose prose-invert prose-lg max-w-none mb-12 text-gray-300">
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Prerequisites</h2>
+  <h2 class="text-2xl font-bold text-white mt-8 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">01 //</span> Prerequisites
+  </h2>
   <p>
-    [Content placeholder: List of requirements including VPS specs (CPU, RAM), Node.js version, Docker, and Git. ~200 words]
+    Before diving into the installation, ensure your infrastructure meets the following requirements to run Moltbot effectively.
+    As a "sovereign" agent, Moltbot thrives on dedicated resources.
   </p>
+  <ul class="list-disc pl-5 space-y-2 marker:text-brand-cyan">
+    <li>
+      <strong>Hardware:</strong>
+      <ul class="list-none pl-4 mt-2 space-y-1 text-gray-400">
+        <li><span class="text-brand-cyan">➜</span> <strong>Option A (Recommended):</strong> Mac Mini (M2/M4 Pro) - Ideal for local model inference and ecosystem integration.</li>
+        <li><span class="text-brand-cyan">➜</span> <strong>Option B (Cloud):</strong> Linux VPS (Ubuntu 22.04 LTS) with at least 4GB RAM and 2 vCPUs (e.g., DigitalOcean, Hetzner, AWS).</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Software Environment:</strong>
+      <ul class="list-none pl-4 mt-2 space-y-1 text-gray-400">
+        <li><span class="text-brand-cyan">➜</span> <strong>Docker & Docker Compose:</strong> Essential for containerized deployment.</li>
+        <li><span class="text-brand-cyan">➜</span> <strong>Node.js:</strong> Version 20.x or higher (LTS).</li>
+        <li><span class="text-brand-cyan">➜</span> <strong>Git:</strong> For version control and updates.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>API Keys:</strong> Valid API keys for your preferred LLM provider (Anthropic API Key for Claude 3.5/4.5 or OpenAI API Key for GPT-4o).
+    </li>
+  </ul>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 1: VPS Provisioning</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">02 //</span> Step 1: VPS Provisioning & SSH Access
+  </h2>
   <p>
-    [Content placeholder: detailed instructions on buying and accessing a VPS from providers like DigitalOcean or Hetzner. SSH access guide. ~300 words]
+    If you are opting for a cloud deployment, choosing the right provider is crucial. We recommend <strong>DigitalOcean</strong> or <strong>Hetzner</strong> for their reliability and cost-effectiveness.
   </p>
+  <ol class="list-decimal pl-5 space-y-4 marker:text-brand-pink font-mono text-sm md:text-base">
+    <li>
+      <strong>Create a Droplet/Instance:</strong> Select an Ubuntu 22.04 LTS image. Choose a plan with at least 4GB RAM to handle memory-intensive operations like vector embeddings.
+    </li>
+    <li>
+      <strong>Access via SSH:</strong> Open your terminal and connect to your server:
+      <div class="bg-black p-4 rounded border border-gray-800 mt-2 text-brand-cyan font-mono text-xs md:text-sm">
+        ssh root@your-server-ip
+      </div>
+    </li>
+    <li>
+      <strong>Secure Your Server (Crucial):</strong> Immediately create a non-root user, disable password authentication, and configure UFW (Uncomplicated Firewall) to allow only SSH (22), HTTP (80), and HTTPS (443).
+    </li>
+  </ol>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 2: Environment Configuration</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">03 //</span> Step 2: Environment Configuration
+  </h2>
   <p>
-    [Content placeholder: How to install dependencies, update packages, and prepare the OS. ~250 words]
+    Once logged in, update your system repositories and install the necessary dependencies. This ensures your OS is patched and ready for the Moltbot runtime.
   </p>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm overflow-x-auto">
+    <span class="text-gray-500"># Update package list and upgrade system</span><br>
+    <span class="text-green-400">sudo apt update && sudo apt upgrade -y</span><br><br>
+    <span class="text-gray-500"># Install Docker and Docker Compose</span><br>
+    <span class="text-green-400">sudo apt install docker.io docker-compose -y</span><br><br>
+    <span class="text-gray-500"># Verify Docker is running</span><br>
+    <span class="text-green-400">sudo systemctl status docker</span>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 3: Installation via Docker</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">04 //</span> Step 3: Installation via Docker
+  </h2>
   <p>
-    [Content placeholder: Docker Compose setup, pulling images, and running the container. The preferred method for production. ~300 words]
+    The most reliable way to run Moltbot is using the official Docker image. This method isolates the application and manages dependencies automatically.
   </p>
+  <p>Clone the repository and build the container:</p>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm overflow-x-auto">
+    <span class="text-green-400">git clone https://github.com/moltbot/moltbot-core.git</span><br>
+    <span class="text-green-400">cd moltbot-core</span><br>
+    <span class="text-green-400">docker-compose build --no-cache</span>
+  </div>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 4: Configuring .env Variables</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">05 //</span> Step 4: Configuring .env Variables
+  </h2>
   <p>
-    [Content placeholder: Detailed breakdown of the .env file. Explaining API_KEYs, PORT, and DATABASE_URL settings. ~300 words]
+    Configuration is managed via a <code>.env</code> file. Copy the example file to start:
   </p>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm mb-4">
+    <span class="text-green-400">cp .env.example .env</span><br>
+    <span class="text-green-400">nano .env</span>
+  </div>
+  <p>Key variables you must configure:</p>
+  <ul class="list-none space-y-2 pl-0">
+    <li class="bg-brand-black p-3 border-l-2 border-brand-cyan">
+      <code class="text-brand-pink">MOLTBOT_API_KEY</code>: Your secure gateway token. Treat this like a password.
+    </li>
+    <li class="bg-brand-black p-3 border-l-2 border-brand-cyan">
+      <code class="text-brand-pink">ANTHROPIC_API_KEY</code>: Required if using Claude models.
+    </li>
+    <li class="bg-brand-black p-3 border-l-2 border-brand-cyan">
+      <code class="text-brand-pink">DATABASE_URL</code>: PostgreSQL connection string (defaults to internal Docker container).
+    </li>
+  </ul>
 
-  <h2 class="text-2xl font-bold text-white mt-8 mb-4">Step 5: Verifying the Installation</h2>
+  <h2 class="text-2xl font-bold text-white mt-12 mb-4 border-b border-gray-800 pb-2 flex items-center">
+    <span class="text-brand-pink mr-3">06 //</span> Step 5: Launch & Verification
+  </h2>
   <p>
-    [Content placeholder: How to check logs, verify the health check endpoint, and ensure the bot is running. ~150 words]
+    Start your Moltbot instance in detached mode:
+  </p>
+  <div class="bg-black p-4 rounded border border-gray-800 font-mono text-xs md:text-sm mb-4">
+    <span class="text-green-400">docker-compose up -d</span>
+  </div>
+  <p>
+    Verify the service is healthy by checking the logs or pinging the health endpoint. You should see "System Status: ONLINE" in the logs.
   </p>
 </article>
 
 <section class="mb-12">
-  <h2 class="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+  <h2 class="text-3xl font-bold text-white mb-6 uppercase tracking-wider"><span class="text-brand-pink">///</span> FAQ</h2>
   <div class="space-y-4">
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>What is the minimum RAM requirement?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
+    <details class="group bg-brand-black border border-gray-800 p-4 cursor-pointer hover:border-brand-cyan transition-all duration-300">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-brand-cyan transition-colors">
+        <span class="font-mono">01 // What is the minimum RAM requirement?</span>
+        <span class="transform group-open:rotate-180 transition-transform text-brand-cyan">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </summary>
-      <div class="mt-4 text-gray-400">
-        We recommend at least 2GB of RAM for a smooth experience, especially if you plan to use local embeddings or multiple heavy skills.
+      <div class="mt-4 text-gray-400 pl-4 border-l-2 border-brand-cyan/30">
+        We recommend at least 4GB of RAM for a smooth experience, especially if you plan to use local embeddings or multiple heavy skills. 2GB may suffice for very basic text-only operations.
       </div>
     </details>
 
-    <details class="group bg-gray-900 rounded-lg p-4 cursor-pointer">
-      <summary class="flex justify-between items-center font-medium text-white group-hover:text-[#FF5733] transition-colors">
-        <span>Can I use Windows Server?</span>
-        <span class="transform group-open:rotate-180 transition-transform">
+    <details class="group bg-brand-black border border-gray-800 p-4 cursor-pointer hover:border-brand-cyan transition-all duration-300">
+      <summary class="flex justify-between items-center font-medium text-white group-hover:text-brand-cyan transition-colors">
+        <span class="font-mono">02 // Can I use Windows Server?</span>
+        <span class="transform group-open:rotate-180 transition-transform text-brand-cyan">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </span>
       </summary>
-      <div class="mt-4 text-gray-400">
-        While possible, we strongly recommend Linux (Ubuntu) for better compatibility with Docker and standard server tools.
+      <div class="mt-4 text-gray-400 pl-4 border-l-2 border-brand-cyan/30">
+        While possible via WSL2, we strongly recommend a native Linux environment (Ubuntu) or macOS for better compatibility with Docker and the Moltbot ecosystem tools.
       </div>
     </details>
   </div>

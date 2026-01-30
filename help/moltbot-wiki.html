@@ -1,4 +1,4 @@
----
+﻿---
 layout: default
 title: MoltbotWiki - The Unofficial Community Guide
 seo_title: "MoltbotWiki: The Unofficial Community Documentation & Guide"
@@ -18,9 +18,9 @@ image: "/assets/img/moltbot-wiki-card.jpg"
     <div class="relative z-10 container mx-auto px-4 py-12 max-w-6xl">
         <!-- Breadcrumb -->
         <nav class="mb-8 flex items-center space-x-2 text-sm text-cyan-500/80">
-            <a href="/" class="hover:text-cyan-400 transition-colors">Home</a>
+            <a href="https://moltbotcase.com/" class="hover:text-cyan-400 transition-colors">Home</a>
             <span>/</span>
-            <a href="/help/" class="hover:text-cyan-400 transition-colors">Help Center</a>
+            <a href="https://moltbotcase.com/help/" class="hover:text-cyan-400 transition-colors">Help Center</a>
             <span>/</span>
             <span class="text-cyan-300">MoltbotWiki</span>
         </nav>
@@ -76,7 +76,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                             Welcome to <strong>MoltbotWiki</strong>, the definitive unofficial resource for architects, developers, and power users deploying Moltbot in production environments.
                         </p>
                         <p>
-                            While the <a href="/help/how-to-use-moltbot.html" class="text-cyan-400 hover:underline decoration-dotted">official guide</a> covers the basics, MoltbotWiki dives deeper. This is where the community documents the edge cases, the optimization hacks, and the complex integration patterns that turn a standard Moltbot instance into a bespoke enterprise automation engine.
+                            While the <a href="https://moltbotcase.com/help/how-to-use-moltbot.html" class="text-cyan-400 hover:underline decoration-dotted">official guide</a> covers the basics, MoltbotWiki dives deeper. This is where the community documents the edge cases, the optimization hacks, and the complex integration patterns that turn a standard Moltbot instance into a bespoke enterprise automation engine.
                         </p>
                         <p>
                             Moltbot represents a paradigm shift from static scripts to <strong>agentic workflows</strong>. Unlike traditional chatbots that simply respond to text, Moltbot observes, plans, and executes. This wiki serves as the map for that new territory, helping you navigate the complexities of autonomous AI deployment.
@@ -112,7 +112,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                         </div>
 
                         <p class="mt-6">
-                            For a step-by-step walkthrough of the initial boot sequence, refer to our <a href="/help/moltbot-tutorial.html" class="text-cyan-400 hover:underline decoration-dotted">comprehensive tutorial</a>. If you are setting this up for a corporate environment, ensure you review the <a href="/help/privacy-frontier.html" class="text-cyan-400 hover:underline decoration-dotted">privacy configuration guide</a> first to prevent data leakage.
+                            For a step-by-step walkthrough of the initial boot sequence, refer to our <a href="https://moltbotcase.com/help/moltbot-tutorial.html" class="text-cyan-400 hover:underline decoration-dotted">comprehensive tutorial</a>. If you are setting this up for a corporate environment, ensure you review the <a href="https://moltbotcase.com/help/privacy-frontier.html" class="text-cyan-400 hover:underline decoration-dotted">privacy configuration guide</a> first to prevent data leakage.
                         </p>
                     </div>
                 </section>
@@ -126,7 +126,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                         <div class="bg-gray-800/50 p-6 rounded-xl border border-blue-500/20 hover:border-cyan-500/50 transition-colors">
                             <h3 class="text-xl font-bold text-cyan-300 mb-3">The Brain (Orchestrator)</h3>
                             <p class="text-sm text-gray-400">
-                                The central decision-making unit. It parses user intent and routes tasks to specialized sub-agents. See <a href="/help/behind-the-scenes.html" class="text-cyan-400 hover:underline">Behind the Scenes</a> for the logic flow.
+                                The central decision-making unit. It parses user intent and routes tasks to specialized sub-agents. See <a href="https://moltbotcase.com/help/behind-the-scenes.html" class="text-cyan-400 hover:underline">Behind the Scenes</a> for the logic flow.
                             </p>
                         </div>
                         <div class="bg-gray-800/50 p-6 rounded-xl border border-blue-500/20 hover:border-cyan-500/50 transition-colors">
@@ -141,7 +141,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                             Understanding the architecture is crucial when debugging. A common misconception is that Moltbot is a monolithic LLM wrapper. It is actually a <strong>microservices mesh</strong>. The `Agent Router` service determines whether a query needs the creative writing module or the code execution sandbox.
                         </p>
                         <p>
-                            This modularity is what protects your infrastructure. If the <a href="/help/pure-llm-vulnerability.html" class="text-cyan-400 hover:underline decoration-dotted">LLM layer is compromised</a> via prompt injection, the sandbox isolation prevents the agent from executing harmful system commands.
+                            This modularity is what protects your infrastructure. If the <a href="https://moltbotcase.com/help/pure-llm-vulnerability.html" class="text-cyan-400 hover:underline decoration-dotted">LLM layer is compromised</a> via prompt injection, the sandbox isolation prevents the agent from executing harmful system commands.
                         </p>
                     </div>
                 </section>
@@ -161,17 +161,17 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                         <h3 class="text-xl font-bold text-red-300 mt-6 mb-3">The "Ironclad" Configuration</h3>
                         <ol class="list-decimal pl-6 space-y-2">
                             <li>
-                                <strong>Disable Recursive Tool Execution:</strong> Prevent the agent from calling tools that call other tools indefinitely. This mitigates the risk of <a href="/help/agentic-trojan-horse.html" class="text-cyan-400 hover:underline decoration-dotted">Agentic Trojan Horses</a>.
+                                <strong>Disable Recursive Tool Execution:</strong> Prevent the agent from calling tools that call other tools indefinitely. This mitigates the risk of <a href="https://moltbotcase.com/help/agentic-trojan-horse.html" class="text-cyan-400 hover:underline decoration-dotted">Agentic Trojan Horses</a>.
                             </li>
                             <li>
-                                <strong>Identity Verification:</strong> Implement strict OAuth2 scopes. Read about <a href="/help/hybrid-identity.html" class="text-cyan-400 hover:underline decoration-dotted">Hybrid Identity attacks</a> to understand why API keys are not enough.
+                                <strong>Identity Verification:</strong> Implement strict OAuth2 scopes. Read about <a href="https://moltbotcase.com/help/hybrid-identity.html" class="text-cyan-400 hover:underline decoration-dotted">Hybrid Identity attacks</a> to understand why API keys are not enough.
                             </li>
                             <li>
                                 <strong>Sandboxing:</strong> Run all code execution environments in ephemeral Docker containers with no network access, unless explicitly whitelisted.
                             </li>
                         </ol>
                         <p class="mt-4 text-sm bg-black/50 p-4 rounded border-l-4 border-red-500">
-                            Check the <a href="/help/active-threats.html" class="text-red-400 hover:underline font-bold">Active Threats Advisory</a> for the latest CVEs affecting agentic frameworks.
+                            Check the <a href="https://moltbotcase.com/help/active-threats.html" class="text-red-400 hover:underline font-bold">Active Threats Advisory</a> for the latest CVEs affecting agentic frameworks.
                         </p>
                     </div>
                 </section>
@@ -195,7 +195,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                                     <p class="text-sm text-gray-400 mb-4">
                                         Automate resume screening, initial candidate outreach, and interview scheduling.
                                     </p>
-                                    <a href="/help/hr-automation.html" class="inline-block text-teal-400 text-sm font-bold hover:text-white transition-colors">
+                                    <a href="https://moltbotcase.com/help/hr-automation.html" class="inline-block text-teal-400 text-sm font-bold hover:text-white transition-colors">
                                         View HR Config &rarr;
                                     </a>
                                 </div>
@@ -209,7 +209,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                                     <p class="text-sm text-gray-400 mb-4">
                                         Connect Moltbot to your CRM and ERP to automate invoicing and client follow-ups.
                                     </p>
-                                    <a href="/help/workflow-automation.html" class="inline-block text-orange-400 text-sm font-bold hover:text-white transition-colors">
+                                    <a href="https://moltbotcase.com/help/workflow-automation.html" class="inline-block text-orange-400 text-sm font-bold hover:text-white transition-colors">
                                         View BizOps Config &rarr;
                                     </a>
                                 </div>
@@ -217,7 +217,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                         </div>
 
                         <p class="mt-8">
-                            For a day-in-the-life example of how these workflows come together, read <a href="/help/24-hours-with-moltbot.html" class="text-cyan-400 hover:underline decoration-dotted">24 Hours with Moltbot</a>. It showcases the practical reality of living with an AI agent.
+                            For a day-in-the-life example of how these workflows come together, read <a href="https://moltbotcase.com/help/24-hours-with-moltbot.html" class="text-cyan-400 hover:underline decoration-dotted">24 Hours with Moltbot</a>. It showcases the practical reality of living with an AI agent.
                         </p>
                     </div>
                 </section>
@@ -260,7 +260,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                             </table>
                         </div>
                         <p class="mt-6 text-sm text-gray-400">
-                            <em>Disclaimer: Community modules are not audited by the core team. Use at your own risk. Refer to <a href="/help/revolution-vs-risk.html" class="text-cyan-400 hover:underline">Revolution vs Risk</a> for guidelines on evaluating third-party code.</em>
+                            <em>Disclaimer: Community modules are not audited by the core team. Use at your own risk. Refer to <a href="https://moltbotcase.com/help/revolution-vs-risk.html" class="text-cyan-400 hover:underline">Revolution vs Risk</a> for guidelines on evaluating third-party code.</em>
                         </p>
                     </div>
                 </section>
@@ -268,7 +268,7 @@ image: "/assets/img/moltbot-wiki-card.jpg"
                 <!-- Footer Call to Action -->
                 <div class="border-t border-cyan-900/50 pt-8 mt-12 text-center">
                     <p class="text-gray-400 mb-4">Ready to deploy your own instance?</p>
-                    <a href="/setup/" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300">
+                    <a href="https://moltbotcase.com/setup/" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300">
                         Launch Setup Guide
                     </a>
                 </div>
@@ -309,3 +309,4 @@ image: "/assets/img/moltbot-wiki-card.jpg"
         background: #06b6d4;
     }
 </style>
+

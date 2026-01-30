@@ -1,22 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.seo_title | default: site.title }}</title>
   <meta name="description" content="{{ page.seo_description | default: site.description }}">
-  
-  {% assign url_parts = page.url | split: '/' %}
-  {% assign depth = url_parts.size | minus: 2 %}
-  {% if depth < 0 %}{% assign depth = 0 %}{% endif %}
-  {% capture relative_path %}{% for i in (1..depth) %}../{% endfor %}{% endcapture %}
-  {% if relative_path == "" %}{% assign relative_path = "./" %}{% endif %}
-
   <link rel="canonical" href="https://moltbotcase.com{{ page.url | replace:'index.html','' }}">
-  <link rel="icon" type="image/svg+xml" href="{{ relative_path }}assets/img/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="https://moltbotcase.com/assets/img/favicon.svg">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ relative_path }}assets/css/style.css">
+  <link rel="stylesheet" href="https://moltbotcase.com/assets/css/style.css">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -80,6 +73,7 @@
   {% include footer.html %}
 
   <!-- Custom JS -->
-  <script src="{{ relative_path }}assets/js/main.js"></script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
+

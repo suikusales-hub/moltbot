@@ -1,0 +1,158 @@
+---
+layout: default
+title: Behind the Scenes - Moltbot Architecture
+seo_title: Moltbot Architecture Explained: How the Agent Runtime Works
+seo_description: Deep dive into Moltbot's internal architecture. Understand how the Gateway, Channel Adapters, and Agent Runtime work together to automate tasks securely.
+---
+
+<div class="container mx-auto px-4 py-12 relative">
+  <!-- Background Elements -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+    <div class="absolute top-0 left-1/4 w-1/2 h-full bg-gradient-to-b from-blue-600/5 to-transparent"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <div class="max-w-4xl mx-auto mb-16 text-center">
+    <div class="inline-block border border-blue-500/50 bg-blue-500/10 px-4 py-1 rounded-full mb-6">
+      <span class="text-blue-400 font-mono text-sm tracking-wider uppercase">System Architecture</span>
+    </div>
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      BEHIND THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 glitch-text" data-text="SCENES">SCENES</span>
+    </h1>
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+      Moltbot is not a chatbot—it is an autonomous runtime. Here is how the engine translates "Delete emails" into system actions.
+    </p>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="max-w-4xl mx-auto">
+    
+    <!-- Core Concept -->
+    <div class="cyber-card p-8 bg-black/60 border-l-4 border-blue-500 mb-12">
+      <h2 class="text-2xl font-bold text-white mb-4">More Than a Wrapper</h2>
+      <p class="text-gray-300 leading-relaxed">
+        The viral success of Moltbot (formerly Clawdbot) wasn't just about AI—it was about <strong>Local-First Agency</strong>. Unlike standard LLM wrappers that live in a browser tab, Moltbot is a long-running Node.js service that lives on your machine. It normalizes communication from any platform into a single internal language, allowing you to control your server via WhatsApp as easily as you would via SSH.
+      </p>
+    </div>
+
+    <!-- The Architecture Diagram -->
+    <div class="mb-16">
+      <h3 class="text-xl font-bold text-white mb-8 flex items-center gap-2">
+        <span class="text-blue-500">01.</span> The Flow of Control
+      </h3>
+      
+      <div class="relative bg-gray-900/50 p-8 rounded-xl border border-gray-800 overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center items-center relative z-10">
+          
+          <!-- Step 1 -->
+          <div class="p-4 bg-black border border-gray-700 rounded-lg">
+            <div class="text-green-400 font-mono text-xs mb-2">WhatsApp / Telegram</div>
+            <div class="text-white font-bold">Channel Adapter</div>
+            <div class="text-gray-500 text-xs mt-2">Translates API</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="hidden md:block text-blue-500 text-2xl">→</div>
+
+          <!-- Step 2 -->
+          <div class="p-4 bg-blue-900/20 border border-blue-500 rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+            <div class="text-blue-400 font-mono text-xs mb-2">Node.js Process</div>
+            <div class="text-white font-bold text-xl">The Gateway</div>
+            <div class="text-blue-300 text-xs mt-2">Traffic Control</div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="hidden md:block text-blue-500 text-2xl">→</div>
+
+          <!-- Step 3 -->
+          <div class="p-4 bg-black border border-gray-700 rounded-lg">
+            <div class="text-purple-400 font-mono text-xs mb-2">LLM + Tools</div>
+            <div class="text-white font-bold">Agent Runtime</div>
+            <div class="text-gray-500 text-xs mt-2">Executes Logic</div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Component Breakdown -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      
+      <!-- The Gateway -->
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-blue-500">02.</span> The Gateway
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Think of the Gateway as the central nervous system. It binds to <code class="text-blue-400">127.0.0.1</code> and exposes a WebSocket API. It doesn't "think"—it routes.
+        </p>
+        <ul class="space-y-2 text-gray-500 text-sm">
+          <li class="flex items-center gap-2">🔹 Maintains session state</li>
+          <li class="flex items-center gap-2">🔹 Aggregates messages from all apps</li>
+          <li class="flex items-center gap-2">🔹 Dispatches to the active Agent</li>
+        </ul>
+      </div>
+
+      <!-- The Adapters -->
+      <div>
+        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <span class="text-blue-500">03.</span> Channel Adapters
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Adapters are translators. They take platform-specific JSON and convert it into Moltbot's normalized format.
+        </p>
+        <div class="bg-black p-3 rounded border border-gray-800 font-mono text-xs text-gray-300">
+          <span class="text-gray-500">// Telegram input becomes:</span><br>
+          {<br>
+          &nbsp;&nbsp;"text": "Delete logs",<br>
+          &nbsp;&nbsp;"sender": "user_123",<br>
+          &nbsp;&nbsp;"platform": "telegram"<br>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools & Security -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="text-blue-500">04.</span> Tools & Security Risks
+      </h3>
+      <p class="text-gray-400 mb-6">
+        The Agent Runtime decides <em>actions</em>, not just words. If you ask to "Delete emails," the agent invokes the Email Tool. This power comes with significant responsibility.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-red-900/10 border border-red-500/30 p-4 rounded hover:border-red-500/60 transition-colors">
+          <h4 class="text-red-400 font-bold mb-2">Exposed Gateway</h4>
+          <p class="text-xs text-gray-400">
+            By default, the Gateway listens on localhost. Exposing this port publicly allows anyone to control your agent.
+          </p>
+        </div>
+        <div class="bg-red-900/10 border border-red-500/30 p-4 rounded hover:border-red-500/60 transition-colors">
+          <h4 class="text-red-400 font-bold mb-2">Untrusted Senders</h4>
+          <p class="text-xs text-gray-400">
+            Without allow-listing, any user on a connected platform (e.g., a random Telegram user) could trigger commands.
+          </p>
+        </div>
+        <div class="bg-red-900/10 border border-red-500/30 p-4 rounded hover:border-red-500/60 transition-colors">
+          <h4 class="text-red-400 font-bold mb-2">Tool Scope</h4>
+          <p class="text-xs text-gray-400">
+            Tools run with the host's permissions. A `bash` tool has the same power as the user running the process.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center border-t border-gray-800 pt-8">
+      <p class="text-gray-500 italic mb-6">
+        Based on the DigitalOcean conceptual article: "How Moltbot Works Behind the Scenes"
+      </p>
+      <a href="/help/" class="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 transition-colors uppercase tracking-widest text-sm font-bold">
+        <span>← Return to Help Center</span>
+      </a>
+    </div>
+
+  </div>
+</div>

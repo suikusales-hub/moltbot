@@ -1,0 +1,126 @@
+---
+layout: default
+title: Agentic Trojan Horse - Security Analysis
+seo_title: The Agentic Trojan Horse: Moltbot Security Analysis & Risks
+seo_description: In-depth analysis of how autonomous agents like Moltbot can act as Trojan Horses, creating visibility gaps and enabling rapid data exfiltration.
+---
+
+<div class="container mx-auto px-4 py-12 relative">
+  <!-- Background Elements -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-purple-900/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-40 right-10 w-96 h-96 bg-cyan-900/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <div class="max-w-4xl mx-auto mb-16 text-center">
+    <div class="inline-block border border-brand-pink/50 bg-brand-pink/10 px-4 py-1 rounded-full mb-6">
+      <span class="text-brand-pink font-mono text-sm tracking-wider uppercase">Security Intelligence Report</span>
+    </div>
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      THE AGENTIC <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-cyan glitch-text" data-text="TROJAN HORSE">TROJAN HORSE</span>
+    </h1>
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+      How autonomous bots are silently transforming from productivity tools into backdoor entry points for your digital infrastructure.
+    </p>
+  </div>
+
+  <!-- Core Content Grid -->
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
+    
+    <!-- Left Column: The Problem -->
+    <div class="md:col-span-7 space-y-8">
+      <div class="cyber-card p-8 bg-black/40 border-l-4 border-brand-pink">
+        <h2 class="text-2xl font-bold text-white mb-4 font-mono">The Visibility Gap</h2>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          The industry is currently obsessed with the efficiency gains of AI automation, but a dangerous blind spot is growing in community channels. Moltbot isn't just a script; it's an <strong>Agent</strong> with the autonomy to navigate and execute workflows.
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+          The core vulnerability lies in "Shadow IT." Community bots are often deployed by social media managers or contractors, completely bypassing DevSecOps protocols. To a security team, these look like low-risk accounts, but in reality, they are high-privilege gateways sitting on local machines with access to production secrets.
+        </p>
+      </div>
+
+      <div class="cyber-card p-8 bg-black/40">
+        <h2 class="text-2xl font-bold text-white mb-6 font-mono flex items-center">
+          <span class="text-brand-cyan mr-3">>></span> The 30-Second Kill Chain
+        </h2>
+        <div class="space-y-6">
+          <div class="relative pl-8 border-l border-gray-800">
+            <div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-gray-600"></div>
+            <h3 class="text-lg font-bold text-white mb-1">01. The Setup</h3>
+            <p class="text-sm text-gray-400">A Discord admin installs Moltbot to automate moderation, driven by the hype of AI efficiency. No security audit is performed.</p>
+          </div>
+          <div class="relative pl-8 border-l border-gray-800">
+            <div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-brand-pink"></div>
+            <h3 class="text-lg font-bold text-white mb-1">02. The Infiltration</h3>
+            <p class="text-sm text-gray-400">An attacker joins the public server. Since these communities are designed for growth, entry is unrestricted and goes unnoticed.</p>
+          </div>
+          <div class="relative pl-8 border-l border-gray-800">
+            <div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+            <h3 class="text-lg font-bold text-white mb-1">03. The Injection</h3>
+            <p class="text-sm text-gray-400">Using a specific management command, the attacker injects a cron job into the bot's execution loop. The bot, running with host permissions, begins crawling the local filesystem.</p>
+          </div>
+          <div class="relative pl-8 border-l border-gray-800">
+            <div class="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-brand-cyan"></div>
+            <h3 class="text-lg font-bold text-white mb-1">04. The Exfiltration</h3>
+            <p class="text-sm text-gray-400">Within seconds, tokens, API keys, and passwords are bundled and sent to the attacker. Traces are wiped by the agent's own logic.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Visual & Stats -->
+    <div class="md:col-span-5 space-y-8">
+      <div class="cyber-card p-1">
+        <div class="bg-gray-900 p-6 rounded-sm h-full">
+          <h3 class="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Attack Vector Simulation</h3>
+          <div class="font-mono text-xs space-y-2">
+            <div class="flex justify-between text-green-400">
+              <span>> SCANNING FILESYSTEM...</span>
+              <span>[DONE]</span>
+            </div>
+            <div class="flex justify-between text-yellow-400">
+              <span>> FOUND .ENV</span>
+              <span>[DETECTED]</span>
+            </div>
+            <div class="flex justify-between text-yellow-400">
+              <span>> FOUND AWS_CREDENTIALS</span>
+              <span>[DETECTED]</span>
+            </div>
+            <div class="flex justify-between text-red-500">
+              <span>> UPLOADING BUNDLE...</span>
+              <span>[100%]</span>
+            </div>
+            <div class="flex justify-between text-gray-500">
+              <span>> CLEARING LOGS...</span>
+              <span>[DONE]</span>
+            </div>
+            <div class="mt-4 p-3 bg-red-900/20 border border-red-500/30 text-red-300 text-center">
+              TOTAL ELAPSED TIME: 28.4s
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cyber-card p-6 bg-gradient-to-br from-purple-900/20 to-blue-900/20">
+        <h3 class="text-xl font-bold text-white mb-3">The Visibility Mandate</h3>
+        <p class="text-sm text-gray-300 mb-4">
+          "You can't secure what you can't see."
+        </p>
+        <p class="text-sm text-gray-400 leading-relaxed mb-4">
+          The Clawdbot exploit isn't just a software bug; it's a crisis of oversight. Organizations must recognize that autonomous agents deployed by contractors are essentially unmonitored backdoors.
+        </p>
+        <a href="/help/active-threats.html" class="inline-flex items-center text-brand-cyan hover:text-white transition-colors text-sm font-bold uppercase tracking-wider">
+          View Mitigation Protocols <span class="ml-2">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Warning -->
+  <div class="max-w-4xl mx-auto text-center border-t border-gray-800 pt-12">
+    <p class="text-gray-500 italic">
+      Based on security research by Noma Security. This report serves as an educational resource for Moltbot administrators to harden their deployments.
+    </p>
+  </div>
+</div>

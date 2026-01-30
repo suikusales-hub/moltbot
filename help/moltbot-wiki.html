@@ -1,0 +1,311 @@
+---
+layout: default
+title: MoltbotWiki - The Unofficial Community Guide
+seo_title: "MoltbotWiki: The Unofficial Community Documentation & Guide"
+seo_description: "The comprehensive community-maintained documentation for Moltbot. Learn how to install, configure, and extend your autonomous AI agent with this deep-dive guide."
+keywords: "moltbot wiki, moltbot documentation, ai agent guide, moltbot community, open source ai, moltbot configuration"
+author: "Moltbot Community"
+image: "/assets/img/moltbot-wiki-card.jpg"
+---
+
+<div class="relative min-h-screen bg-gray-900 overflow-hidden font-mono text-gray-300 selection:bg-cyan-500 selection:text-black">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute inset-0 bg-[url('/assets/img/grid.svg')] opacity-10"></div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/20 via-transparent to-gray-900/90"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 py-12 max-w-6xl">
+        <!-- Breadcrumb -->
+        <nav class="mb-8 flex items-center space-x-2 text-sm text-cyan-500/80">
+            <a href="/" class="hover:text-cyan-400 transition-colors">Home</a>
+            <span>/</span>
+            <a href="/help/" class="hover:text-cyan-400 transition-colors">Help Center</a>
+            <span>/</span>
+            <span class="text-cyan-300">MoltbotWiki</span>
+        </nav>
+
+        <!-- Header -->
+        <header class="mb-16 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-pulse tracking-tighter" style="text-shadow: 0 0 20px rgba(6,182,212,0.5);">
+                MoltbotWiki_
+            </h1>
+            <p class="text-xl md:text-2xl text-blue-200/80 max-w-3xl mx-auto border-l-4 border-cyan-500 pl-6 py-2 bg-blue-900/20 backdrop-blur-sm">
+                The Unofficial, Community-Driven Knowledge Base for the Autonomous Age.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Sidebar Navigation -->
+            <aside class="lg:col-span-3 lg:sticky lg:top-24 h-fit space-y-8">
+                <div class="cyber-card bg-gray-800/50 border border-blue-500/30 p-6 rounded-xl backdrop-blur-md relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <h3 class="text-lg font-bold text-cyan-400 mb-4 flex items-center">
+                        <span class="w-2 h-2 bg-cyan-500 rounded-full mr-2 animate-ping"></span>
+                        Table of Contents
+                    </h3>
+                    <nav class="space-y-2 text-sm">
+                        <a href="#introduction" class="block text-gray-400 hover:text-cyan-300 hover:pl-2 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500">01. Introduction</a>
+                        <a href="#getting-started" class="block text-gray-400 hover:text-cyan-300 hover:pl-2 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500">02. Getting Started</a>
+                        <a href="#architecture" class="block text-gray-400 hover:text-cyan-300 hover:pl-2 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500">03. System Architecture</a>
+                        <a href="#security-protocols" class="block text-gray-400 hover:text-cyan-300 hover:pl-2 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500">04. Security Protocols</a>
+                        <a href="#advanced-workflows" class="block text-gray-400 hover:text-cyan-300 hover:pl-2 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500">05. Advanced Workflows</a>
+                        <a href="#community-modules" class="block text-gray-400 hover:text-cyan-300 hover:pl-2 transition-all duration-300 border-l-2 border-transparent hover:border-cyan-500">06. Community Modules</a>
+                    </nav>
+                </div>
+
+                <div class="cyber-card bg-blue-900/20 border border-blue-500/30 p-6 rounded-xl text-center">
+                    <h4 class="text-cyan-400 font-bold mb-2">Contribute</h4>
+                    <p class="text-xs text-gray-400 mb-4">Found a bug? Have a better config? Edit this page on GitHub.</p>
+                    <button class="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded transition-colors uppercase tracking-widest">
+                        Edit Source
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="lg:col-span-9 space-y-16">
+                
+                <!-- Introduction -->
+                <section id="introduction" class="cyber-section">
+                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                        <span class="text-cyan-500 mr-4">01.</span> Introduction
+                    </h2>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                        <p class="lead text-xl text-blue-200 mb-6">
+                            Welcome to <strong>MoltbotWiki</strong>, the definitive unofficial resource for architects, developers, and power users deploying Moltbot in production environments.
+                        </p>
+                        <p>
+                            While the <a href="/help/how-to-use-moltbot.html" class="text-cyan-400 hover:underline decoration-dotted">official guide</a> covers the basics, MoltbotWiki dives deeper. This is where the community documents the edge cases, the optimization hacks, and the complex integration patterns that turn a standard Moltbot instance into a bespoke enterprise automation engine.
+                        </p>
+                        <p>
+                            Moltbot represents a paradigm shift from static scripts to <strong>agentic workflows</strong>. Unlike traditional chatbots that simply respond to text, Moltbot observes, plans, and executes. This wiki serves as the map for that new territory, helping you navigate the complexities of autonomous AI deployment.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Getting Started -->
+                <section id="getting-started" class="cyber-section relative">
+                    <div class="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-transparent"></div>
+                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center pl-6">
+                        <span class="text-cyan-500 mr-4">02.</span> Getting Started: The "Right" Way
+                    </h2>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 pl-6">
+                        <p>
+                            Installing Moltbot is deceptive simple, but configuring it for scalability requires foresight. Many users start with a simple Docker container but soon hit bottlenecks when scaling to hundreds of concurrent agent tasks.
+                        </p>
+                        <h3 class="text-xl font-bold text-blue-300 mt-8 mb-4">Prerequisites Checklist</h3>
+                        <ul class="list-none space-y-2">
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Docker Engine 24.0+ (with Buildx support)</li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Python 3.10+ (for local controller scripts)</li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> Redis Stack (required for vector memory persistence)</li>
+                            <li class="flex items-center"><span class="text-green-400 mr-2">✓</span> 8GB+ RAM (16GB recommended for local LLM inference)</li>
+                        </ul>
+                        
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mt-6 font-mono text-sm relative group">
+                            <div class="absolute top-0 right-0 px-2 py-1 bg-gray-700 text-xs text-gray-300 rounded-bl">bash</div>
+                            <p class="text-gray-400"># Clone the community extended repo</p>
+                            <p class="text-green-400">git clone https://github.com/moltbot-community/moltbot-extended.git</p>
+                            <p class="text-green-400">cd moltbot-extended</p>
+                            <p class="text-gray-400 mt-2"># Start with the production profile</p>
+                            <p class="text-green-400">docker-compose --profile production up -d</p>
+                        </div>
+
+                        <p class="mt-6">
+                            For a step-by-step walkthrough of the initial boot sequence, refer to our <a href="/help/moltbot-tutorial.html" class="text-cyan-400 hover:underline decoration-dotted">comprehensive tutorial</a>. If you are setting this up for a corporate environment, ensure you review the <a href="/help/privacy-frontier.html" class="text-cyan-400 hover:underline decoration-dotted">privacy configuration guide</a> first to prevent data leakage.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Architecture -->
+                <section id="architecture" class="cyber-section">
+                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                        <span class="text-cyan-500 mr-4">03.</span> System Architecture
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-800/50 p-6 rounded-xl border border-blue-500/20 hover:border-cyan-500/50 transition-colors">
+                            <h3 class="text-xl font-bold text-cyan-300 mb-3">The Brain (Orchestrator)</h3>
+                            <p class="text-sm text-gray-400">
+                                The central decision-making unit. It parses user intent and routes tasks to specialized sub-agents. See <a href="/help/behind-the-scenes.html" class="text-cyan-400 hover:underline">Behind the Scenes</a> for the logic flow.
+                            </p>
+                        </div>
+                        <div class="bg-gray-800/50 p-6 rounded-xl border border-blue-500/20 hover:border-cyan-500/50 transition-colors">
+                            <h3 class="text-xl font-bold text-cyan-300 mb-3">Memory Matrix (Redis)</h3>
+                            <p class="text-sm text-gray-400">
+                                Moltbot's long-term memory. Unlike standard context windows, this vector database allows the agent to recall interactions from months ago.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                        <p>
+                            Understanding the architecture is crucial when debugging. A common misconception is that Moltbot is a monolithic LLM wrapper. It is actually a <strong>microservices mesh</strong>. The `Agent Router` service determines whether a query needs the creative writing module or the code execution sandbox.
+                        </p>
+                        <p>
+                            This modularity is what protects your infrastructure. If the <a href="/help/pure-llm-vulnerability.html" class="text-cyan-400 hover:underline decoration-dotted">LLM layer is compromised</a> via prompt injection, the sandbox isolation prevents the agent from executing harmful system commands.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Security Protocols -->
+                <section id="security-protocols" class="cyber-section relative overflow-hidden rounded-xl p-8 border border-red-500/30 bg-red-900/10">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <svg class="w-32 h-32 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center relative z-10">
+                        <span class="text-red-500 mr-4">04.</span> Security Protocols
+                    </h2>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 relative z-10">
+                        <p>
+                            <strong>Warning:</strong> Default configurations are optimized for ease of use, not maximum security. Before exposing Moltbot to the public internet, you must implement the "Ironclad" protocol.
+                        </p>
+                        <h3 class="text-xl font-bold text-red-300 mt-6 mb-3">The "Ironclad" Configuration</h3>
+                        <ol class="list-decimal pl-6 space-y-2">
+                            <li>
+                                <strong>Disable Recursive Tool Execution:</strong> Prevent the agent from calling tools that call other tools indefinitely. This mitigates the risk of <a href="/help/agentic-trojan-horse.html" class="text-cyan-400 hover:underline decoration-dotted">Agentic Trojan Horses</a>.
+                            </li>
+                            <li>
+                                <strong>Identity Verification:</strong> Implement strict OAuth2 scopes. Read about <a href="/help/hybrid-identity.html" class="text-cyan-400 hover:underline decoration-dotted">Hybrid Identity attacks</a> to understand why API keys are not enough.
+                            </li>
+                            <li>
+                                <strong>Sandboxing:</strong> Run all code execution environments in ephemeral Docker containers with no network access, unless explicitly whitelisted.
+                            </li>
+                        </ol>
+                        <p class="mt-4 text-sm bg-black/50 p-4 rounded border-l-4 border-red-500">
+                            Check the <a href="/help/active-threats.html" class="text-red-400 hover:underline font-bold">Active Threats Advisory</a> for the latest CVEs affecting agentic frameworks.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Advanced Workflows -->
+                <section id="advanced-workflows" class="cyber-section">
+                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                        <span class="text-cyan-500 mr-4">05.</span> Advanced Workflows
+                    </h2>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                        <p>
+                            Once your instance is secure, the real fun begins. Moltbot excels at chaining complex tasks.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                            <!-- Workflow 1 -->
+                            <div class="group relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                                <div class="relative bg-gray-900 border border-gray-700 p-6 rounded-xl h-full">
+                                    <h3 class="text-xl font-bold text-teal-400 mb-2">HR & Recruitment</h3>
+                                    <p class="text-sm text-gray-400 mb-4">
+                                        Automate resume screening, initial candidate outreach, and interview scheduling.
+                                    </p>
+                                    <a href="/help/hr-automation.html" class="inline-block text-teal-400 text-sm font-bold hover:text-white transition-colors">
+                                        View HR Config &rarr;
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Workflow 2 -->
+                            <div class="group relative">
+                                <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                                <div class="relative bg-gray-900 border border-gray-700 p-6 rounded-xl h-full">
+                                    <h3 class="text-xl font-bold text-orange-400 mb-2">Business Operations</h3>
+                                    <p class="text-sm text-gray-400 mb-4">
+                                        Connect Moltbot to your CRM and ERP to automate invoicing and client follow-ups.
+                                    </p>
+                                    <a href="/help/workflow-automation.html" class="inline-block text-orange-400 text-sm font-bold hover:text-white transition-colors">
+                                        View BizOps Config &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-8">
+                            For a day-in-the-life example of how these workflows come together, read <a href="/help/24-hours-with-moltbot.html" class="text-cyan-400 hover:underline decoration-dotted">24 Hours with Moltbot</a>. It showcases the practical reality of living with an AI agent.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Community Modules -->
+                <section id="community-modules" class="cyber-section mb-12">
+                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center">
+                        <span class="text-cyan-500 mr-4">06.</span> Community Modules
+                    </h2>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                        <p>
+                            The power of Moltbot lies in its plugin ecosystem. The community has developed hundreds of modules that extend functionality without touching the core codebase.
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse mt-4">
+                                <thead>
+                                    <tr class="border-b border-gray-700 text-cyan-400">
+                                        <th class="py-2 px-4">Module Name</th>
+                                        <th class="py-2 px-4">Function</th>
+                                        <th class="py-2 px-4">Popularity</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm">
+                                    <tr class="border-b border-gray-800 hover:bg-white/5">
+                                        <td class="py-3 px-4 font-mono text-blue-300">moltbot-git-ops</td>
+                                        <td class="py-3 px-4">Automated PR reviews and merging</td>
+                                        <td class="py-3 px-4 text-yellow-400">★★★★★</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800 hover:bg-white/5">
+                                        <td class="py-3 px-4 font-mono text-blue-300">moltbot-finance</td>
+                                        <td class="py-3 px-4">Crypto/Stock market sentiment analysis</td>
+                                        <td class="py-3 px-4 text-yellow-400">★★★★☆</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800 hover:bg-white/5">
+                                        <td class="py-3 px-4 font-mono text-blue-300">moltbot-home-assistant</td>
+                                        <td class="py-3 px-4">IoT device control bridge</td>
+                                        <td class="py-3 px-4 text-yellow-400">★★★★☆</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-6 text-sm text-gray-400">
+                            <em>Disclaimer: Community modules are not audited by the core team. Use at your own risk. Refer to <a href="/help/revolution-vs-risk.html" class="text-cyan-400 hover:underline">Revolution vs Risk</a> for guidelines on evaluating third-party code.</em>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Footer Call to Action -->
+                <div class="border-t border-cyan-900/50 pt-8 mt-12 text-center">
+                    <p class="text-gray-400 mb-4">Ready to deploy your own instance?</p>
+                    <a href="/setup/" class="inline-block px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-bold rounded shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300">
+                        Launch Setup Guide
+                    </a>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</div>
+
+<style>
+    .cyber-section {
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+    }
+    .cyber-section:nth-child(1) { animation-delay: 0.1s; }
+    .cyber-section:nth-child(2) { animation-delay: 0.2s; }
+    .cyber-section:nth-child(3) { animation-delay: 0.3s; }
+    .cyber-section:nth-child(4) { animation-delay: 0.4s; }
+    .cyber-section:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Custom Scrollbar for the wiki page */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #0891b2;
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #06b6d4;
+    }
+</style>

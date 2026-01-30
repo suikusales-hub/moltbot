@@ -1,0 +1,175 @@
+---
+layout: default
+title: Security Advisory - Moltbot Risks
+seo_title: Critical Advisory: Moltbot & Clawdbot Security Vulnerabilities
+seo_description: Detailed analysis of exposed admin ports, credential leaks, and supply-chain risks in Moltbot deployments. Learn mitigation strategies against active threats.
+---
+
+<div class="container mx-auto px-4 py-12 relative">
+  <!-- Background Decorations -->
+  <div class="absolute top-0 right-0 w-96 h-96 bg-red-600/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-pink/5 rounded-full blur-3xl -z-10"></div>
+
+  <!-- Header Section -->
+  <div class="max-w-4xl mx-auto mb-12 border-l-4 border-red-500 pl-6">
+    <div class="flex items-center gap-4 mb-4">
+      <span class="bg-red-500/10 text-red-500 border border-red-500/50 px-3 py-1 text-xs font-mono uppercase tracking-widest">Active Threat</span>
+      <span class="text-gray-500 font-mono text-sm">{{ site.time | date: "%Y-%m-%d" }}</span>
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold font-mono text-white mb-4 glitch-hover" data-text="SYSTEM VULNERABILITY DETECTED">
+      SYSTEM VULNERABILITY DETECTED
+    </h1>
+    <p class="text-xl text-gray-300">
+      Analysis of critical exposure vectors in Moltbot (formerly Clawdbot) instances: Admin Ports, Credential Harvesting, and Skill Supply-Chain Attacks.
+    </p>
+  </div>
+
+  <!-- Executive Summary -->
+  <div class="max-w-4xl mx-auto mb-12">
+    <div class="cyber-card p-6 bg-black/40 border border-gray-800 hover:border-red-500/50 transition-colors">
+      <h2 class="text-2xl font-bold text-brand-cyan mb-4 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Executive Summary
+      </h2>
+      <p class="text-gray-400 leading-relaxed">
+        Recent telemetry has identified a wave of security incidents targeting AI personal assistants operating under the Moltbot (and legacy Clawdbot) framework. While designed for integration with platforms like WhatsApp and Telegram, a significant percentage of deployments lack sufficient network segmentation. The primary risks involve <strong>unauthenticated administrative interfaces</strong> exposed to the public internet, the storage of sensitive credentials in <strong>plaintext formats</strong>, and susceptibility to <strong>poisoned skill libraries</strong>. These vulnerabilities provide threat actors with opportunities for data exfiltration, remote code execution, and persistent backdoor access.
+      </p>
+    </div>
+  </div>
+
+  <!-- Detailed Analysis Grid -->
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+    <!-- Risk 1 -->
+    <div class="cyber-card p-6 relative overflow-hidden group">
+      <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3 font-mono">01. Exposed Interfaces</h3>
+      <p class="text-gray-400 text-sm mb-4">
+        Hundreds of instances broadcast unauthenticated admin ports (often 8080/tcp) to the web. Default configurations frequently bind to <code>0.0.0.0</code>, allowing external actors to access the control dashboard without credentials.
+      </p>
+      <div class="font-mono text-xs text-red-400 bg-red-900/10 p-2 border border-red-900/30">
+        > T1133: External Remote Services<br>
+        > T1210: Exploitation of Remote Services
+      </div>
+    </div>
+
+    <!-- Risk 2 -->
+    <div class="cyber-card p-6 relative overflow-hidden group">
+      <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-brand-pink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3 font-mono">02. Supply-Chain Poisoning</h3>
+      <p class="text-gray-400 text-sm mb-4">
+        The "Skill" architecture allows dynamic loading of capabilities. Proof-of-concept attacks demonstrate that malicious skills uploaded to the ClawHub library can execute arbitrary commands on downstream Moltbot instances.
+      </p>
+      <div class="font-mono text-xs text-brand-pink bg-pink-900/10 p-2 border border-pink-900/30">
+        > T1574: Hijack Execution Flow<br>
+        > T1659: Content Injection
+      </div>
+    </div>
+    
+    <!-- Risk 3 -->
+    <div class="cyber-card p-6 relative overflow-hidden group md:col-span-2">
+      <h3 class="text-xl font-bold text-white mb-3 font-mono">03. Credential Harvesting</h3>
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="flex-1">
+          <p class="text-gray-400 text-sm mb-4">
+            Moltbot's persistence layer often writes sensitive tokens and API keys to plaintext Markdown or JSON files. This practice makes compromised hosts extremely vulnerable to commodity infostealers like RedLine, Lumma, and Vidar, which scan filesystem artifacts for such patterns.
+          </p>
+          <div class="font-mono text-xs text-brand-cyan bg-cyan-900/10 p-2 border border-cyan-900/30 inline-block">
+            > T1552.001: Credentials In Files
+          </div>
+        </div>
+        <div class="flex-1 bg-black/50 p-4 rounded border border-gray-800 font-mono text-xs overflow-x-auto">
+          <div class="text-gray-500"># Simulation: Credential Access</div>
+          <div class="text-green-400">$ cat /opt/moltbot/config/secrets.json</div>
+          <div class="text-yellow-300">
+            {<br>
+            &nbsp;&nbsp;"openai_api_key": "sk-proj-...",<br>
+            &nbsp;&nbsp;"telegram_bot_token": "123456:ABC-..."<br>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mitigation Protocol -->
+  <div class="max-w-4xl mx-auto mb-12">
+    <h2 class="text-3xl font-bold font-mono text-white mb-8 border-b border-gray-800 pb-2">DEFENSIVE PROTOCOLS</h2>
+    
+    <div class="space-y-6">
+      <details class="group cyber-card bg-gray-900/30 border-l-4 border-l-green-500" open>
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <h3 class="text-lg font-bold text-white group-hover:text-green-400 transition-colors">01. Network Hardening</h3>
+          <span class="text-green-500 transform group-open:rotate-180 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-400 text-sm">
+          <p class="mb-2">Immediately restrict access to administrative ports. Do not bind services to <code>0.0.0.0</code> unless behind a secure reverse proxy with rigorous authentication.</p>
+          <code class="block bg-black p-3 rounded text-green-400 font-mono mt-2">
+            # Example UFW Rule<br>
+            sudo ufw deny 8080/tcp<br>
+            sudo ufw allow from 192.168.1.0/24 to any port 8080
+          </code>
+        </div>
+      </details>
+
+      <details class="group cyber-card bg-gray-900/30 border-l-4 border-l-brand-cyan">
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <h3 class="text-lg font-bold text-white group-hover:text-brand-cyan transition-colors">02. Skill Governance</h3>
+          <span class="text-brand-cyan transform group-open:rotate-180 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-400 text-sm">
+          <p>Treat the skill library as an untrusted source. Disable automatic skill updates and vetting any new modules. Where possible, pin dependencies to known secure hashes and sign trusted skills cryptographically.</p>
+        </div>
+      </details>
+
+      <details class="group cyber-card bg-gray-900/30 border-l-4 border-l-brand-pink">
+        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+          <h3 class="text-lg font-bold text-white group-hover:text-brand-pink transition-colors">03. Secret Management</h3>
+          <span class="text-brand-pink transform group-open:rotate-180 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-400 text-sm">
+          <p>Migrate away from plaintext storage. Utilize environment variables injected at runtime or dedicated secret management solutions (e.g., Vault, Docker Secrets). Enable encryption-at-rest for any persistence layers.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Incident Response -->
+  <div class="max-w-4xl mx-auto">
+    <div class="bg-red-900/10 border border-red-500/30 p-8 rounded-lg text-center">
+      <h3 class="text-xl font-bold text-white mb-4">Suspect a Compromise?</h3>
+      <p class="text-gray-400 mb-6">
+        If you detect unauthorized outbound connections or unexpected child processes spawned by the Moltbot daemon:
+      </p>
+      <div class="flex flex-col md:flex-row justify-center gap-4">
+        <a href="/help/" class="inline-block px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded transition-colors uppercase tracking-wider">
+          View Incident Response Guide
+        </a>
+        <a href="/contact/" class="inline-block px-6 py-3 border border-gray-600 hover:border-white text-gray-300 hover:text-white font-bold rounded transition-colors uppercase tracking-wider">
+          Contact Security Team
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

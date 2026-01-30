@@ -1,0 +1,155 @@
+---
+layout: default
+title: Zero to Agent - The Moltbot Tutorial
+seo_title: Moltbot (Clawdbot) Tutorial: Control Your PC from WhatsApp
+seo_description: A comprehensive guide to installing and configuring Moltbot. Learn how to set up the gateway, connect WhatsApp, and automate your daily workflow.
+---
+
+<div class="container mx-auto px-4 py-12 relative">
+  <!-- Background Elements -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+    <div class="absolute top-0 left-1/4 w-1/2 h-full bg-gradient-to-b from-emerald-500/5 to-transparent"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <div class="max-w-4xl mx-auto mb-16 text-center">
+    <div class="inline-block border border-emerald-500/50 bg-emerald-500/10 px-4 py-1 rounded-full mb-6">
+      <span class="text-emerald-400 font-mono text-sm tracking-wider uppercase">Practical Guide</span>
+    </div>
+    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      ZERO TO <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500 glitch-text" data-text="AGENT">AGENT</span>
+    </h1>
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+      Turn your computer into a 24/7 autonomous worker. From installation to your first WhatsApp command, here is everything you need to know.
+    </p>
+  </div>
+
+  <!-- Main Content Layout -->
+  <div class="max-w-4xl mx-auto">
+    
+    <!-- Intro Card -->
+    <div class="cyber-card p-8 bg-black/60 border-l-4 border-emerald-500 mb-12">
+      <h2 class="text-2xl font-bold text-white mb-4">What You Will Build</h2>
+      <p class="text-gray-300 leading-relaxed mb-6">
+        By the end of this tutorial, you will have a <strong>Moltbot instance</strong> running on your machine that can:
+      </p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-400">
+        <li class="flex items-center gap-3">
+          <span class="text-emerald-500">✓</span> Read and reply to WhatsApp/Telegram messages
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-emerald-500">✓</span> Execute terminal commands autonomously
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-emerald-500">✓</span> Manage its own configuration via web UI
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-emerald-500">✓</span> Survive system reboots (Systemd/Launchd)
+        </li>
+      </ul>
+    </div>
+
+    <!-- Prerequisites -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="text-emerald-500">01.</span> Prerequisites
+      </h3>
+      <div class="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
+        <ul class="space-y-3 text-gray-400 font-mono text-sm">
+          <li>> OS: macOS 14+ or Ubuntu 22.04+ (Windows via WSL2)</li>
+          <li>> Runtime: Node.js v20.0.0 or higher</li>
+          <li>> Docker: Optional, but recommended for sandboxed skills</li>
+          <li>> LLM API Key: OpenAI, Anthropic, or local Ollama</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 1: Installation -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="text-emerald-500">02.</span> The One-Line Install
+      </h3>
+      <p class="text-gray-400 mb-4">
+        Moltbot provides a unified installer that handles dependencies and service creation. Open your terminal and run:
+      </p>
+      <div class="bg-black p-4 rounded border border-gray-800 relative group">
+        <code class="text-emerald-400 font-mono block">curl -fsSL https://get.moltbot.com/install.sh | bash</code>
+        <div class="absolute top-4 right-4 text-xs text-gray-600 uppercase">bash</div>
+      </div>
+      <p class="text-gray-500 text-sm mt-2 italic">
+        *Note: This script will prompt you for sudo access to install the system service.
+      </p>
+    </div>
+
+    <!-- Step 2: Onboarding -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="text-emerald-500">03.</span> Configuration & Onboarding
+      </h3>
+      <p class="text-gray-400 mb-4">
+        Once installed, initialize your bot identity. This interactive wizard will guide you through selecting your LLM provider and setting up your "System Prompt" (personality).
+      </p>
+      <div class="bg-black p-4 rounded border border-gray-800 mb-4">
+        <code class="text-white font-mono block">moltbot onboard</code>
+      </div>
+      <p class="text-gray-400 mb-4">
+        The configuration is stored in <code class="text-emerald-500 bg-emerald-900/20 px-1 rounded">~/.moltbot/config.json</code> (legacy paths may use ~/.clawdbot). You can edit this file manually later for advanced settings like context window size or temperature.
+      </p>
+    </div>
+
+    <!-- Step 3: Channels -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="text-emerald-500">04.</span> Connecting Channels
+      </h3>
+      <p class="text-gray-400 mb-4">
+        The real magic happens when you connect a messaging platform. Moltbot acts as a "client" on these networks.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gray-900/50 p-6 rounded border border-gray-800">
+          <h4 class="text-white font-bold mb-2">WhatsApp</h4>
+          <p class="text-sm text-gray-400 mb-4">Scan a QR code to link Moltbot as a linked device.</p>
+          <code class="text-xs font-mono bg-black p-2 block text-emerald-300">moltbot channel add whatsapp</code>
+        </div>
+        <div class="bg-gray-900/50 p-6 rounded border border-gray-800">
+          <h4 class="text-white font-bold mb-2">Telegram</h4>
+          <p class="text-sm text-gray-400 mb-4">Use a Bot Token from @BotFather.</p>
+          <code class="text-xs font-mono bg-black p-2 block text-emerald-300">moltbot channel add telegram --token YOUR_TOKEN</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Heartbeats -->
+    <div class="mb-12">
+      <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+        <span class="text-emerald-500">05.</span> Setting Up Heartbeats
+      </h3>
+      <p class="text-gray-400 mb-4">
+        "Heartbeats" allow Moltbot to wake up autonomously and check for tasks, even if you haven't messaged it. Create a file at <code class="text-emerald-500 bg-emerald-900/20 px-1 rounded">~/moltbot/HEARTBEAT.md</code>:
+      </p>
+      <div class="bg-black p-4 rounded border border-gray-800">
+        <pre class="text-gray-300 font-mono text-sm"><code># Routine Check
+- [ ] Check unread emails in Gmail
+- [ ] Verify disk space usage on /var
+- [ ] If CPU load > 80%, send me a warning on Telegram
+- [ ] Summarize yesterday's git commits</code></pre>
+      </div>
+      <p class="text-gray-400 mt-4 text-sm">
+        Moltbot will process this checklist every hour (configurable) and execute necessary actions.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center border-t border-gray-800 pt-8">
+      <p class="text-gray-500 italic mb-6">
+        Based on the DataCamp Tutorial: "Moltbot (Clawdbot) Tutorial: Control Your PC from WhatsApp"
+      </p>
+      <a href="/help/" class="inline-flex items-center gap-2 text-emerald-500 hover:text-emerald-400 transition-colors uppercase tracking-widest text-sm font-bold">
+        <span>← Return to Help Center</span>
+      </a>
+    </div>
+
+  </div>
+</div>

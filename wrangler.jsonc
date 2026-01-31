@@ -1,0 +1,12 @@
+{
+  "name": "moltbotcase.com", // 替换为你的外贸站名称（如mro-export-site）
+  "compatibility_date": "2026-01-31",
+  // 核心：指定静态资源目录（若index.html在根目录，填"./"；若在dist/，填"./dist"）
+  "assets": {
+    "directory": "./", 
+    // 可选：外贸站SEO优化，指定首页入口
+    "main_page": "index.html",
+    // 可选：404页面（外贸站用户输错地址时显示）
+    "error_page": "404.html"
+  }
+}

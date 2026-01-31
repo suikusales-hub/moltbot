@@ -1,0 +1,13 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.idea/
+.vscode/
+*.log
+.DS_Store
+fix_seo.js
+fix_seo.py
+fix_quotes.js
+test_encoding.txt
+node_modules/
